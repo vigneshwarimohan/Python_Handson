@@ -1,0 +1,45 @@
+Recursive Fibonacci
+Description
+Earlier you found Fibonacci numbers using loops. In this question, let's try and find it by writing a recursive function. You will be given a positive integer n you have to find the nth Fibonacci number.
+
+The Fibonacci series: 1, 1, 2, 3, 5, 8, 13, 21...
+
+----------------------------------------------------------------------
+Input:
+A positive integer n
+
+Output:
+The nth term in Fibonacci series.
+
+----------------------------------------------------------------------
+Sample input:
+2
+
+Sample output:
+1
+
+----------------------------------------------------------------------
+Sample input:
+8
+
+Sample output: 
+21
+
+----------------------------------------------------------------------
+Note the execution time limit for this problem is less.
+
+#Solution
+
+#input taken here
+n=int(input())
+def fibonacci(n):
+#write code for finding nth fibonacci number
+    if (n == 1) or (n ==2):
+        return(1)
+    else:
+        prev_val1 = fibonacci(n-1)
+        prev_val2 = fibonacci(n-2)
+        final = prev_val1+prev_val2
+        return(final)
+print(fibonacci(n))
+

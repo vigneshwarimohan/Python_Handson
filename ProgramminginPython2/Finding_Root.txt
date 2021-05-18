@@ -1,0 +1,57 @@
+Finding Root
+Description
+When finding out square root, you indirectly solved the problem x2=num for x. You can use the same technique to find roots of other complex functions as well. In this problem, you are asked to solve the equation nx+x=0, where n will be a positive input integer.
+You are to find a solution accurate up to 6 decimal places.
+
+----------------------------------------------------------------------
+Input:
+Positive integer n
+1<= n <= 1000
+
+Output:
+value of x that satisfies the given equation accurate upto 6 decimal places
+
+----------------------------------------------------------------------
+Sample input:
+1
+
+Sample output:
+-1.000000
+
+----------------------------------------------------------------------
+Sample input:
+3
+Sample output:
+-0.547809
+
+----------------------------------------------------------------------
+Sample input:
+7
+Sample output:
+-0.431694
+
+#Solution
+n=int(input())
+#n = int(input())
+
+def binarySearch_root(n):
+    # n is the parameter
+    l = -1
+    r = 0
+
+    while abs(l - r) > 10**(-7):
+        mid = (l + r) / 2
+        #print("mid",mid)
+        # Compute the value of the function and compare against 0.0
+        #print("eval:",n**mid + mid)
+        if (n**mid + mid) == 0.0:
+            return round(mid,7)
+        elif (n**mid + mid) > 0.0:
+            r = mid
+            #print("r",r)
+        else:
+            l = mid
+            #print("l:",l)
+    return round(mid,7)
+
+print('%.6f' % binarySearch_root(n))

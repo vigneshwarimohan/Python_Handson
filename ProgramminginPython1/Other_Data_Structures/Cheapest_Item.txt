@@ -1,0 +1,29 @@
+Cheapest Item
+Description
+You will be given a dictionary with keys as items and values as their prices. You have to print the cheapest item. 
+
+----------------------------------------------------------------------
+Sample input:
+A single line non-empty dictionary
+
+Sample output:
+cheapest_item name: cheapest_item_cost
+
+----------------------------------------------------------------------
+Sample input:
+{'mobile1':10000, 'mobile2':11000, 'mobile3':13000, 'mobile4':9000, 'mobile5':15000, 'mobile6':16000, 'mobile7':17000, 'mobile8':18000, 'mobile9':19000}
+
+Sample output:
+mobile4: 9000
+
+Note: in case of a tie, whichever item came first should be the output.
+
+#Solution
+import ast
+d= input()#take input here
+d = ast.literal_eval(d)
+min_key = min(d, key=d.get)
+a = min_key
+#print(a)
+print(a,": ",sep = '',end = '')
+print(d.get(a),sep = ' ')

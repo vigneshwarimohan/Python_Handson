@@ -1,0 +1,48 @@
+Specific sum
+Description
+Lets now raise the bar higher with this problem and drive home how amazing having more than one iterators can be.
+You will be given a list and an integer k, you have to find two numbers from the list that add up to k
+
+Input:
+Two lines of input, the first line will have a sorted list of integers, the second list will have the number k
+
+Output:
+Two numbers from the list that add up to k
+
+
+Sample input:
+[1, 3, 5, 6, 10] 
+15
+
+Sample output:
+5 10
+
+
+Sample input:
+[5, 6, 7, 10, 16, 17, 19]
+24
+
+Sample output:
+7 17
+
+#Solution 
+import ast
+a=input()
+a = ast.literal_eval(a)
+k=int(input())
+n = len(a)
+def Specific_sum(a):
+    l=0
+    r=n-1
+    s=0
+    while(l<=r):
+        if(a[l]+a[r]==k):
+            #print(s)
+            return (a[l],a[r])
+        elif((a[l]+a[r])>k):
+            r = r-1
+        else:
+            l=l+1
+    return(-1,-1)
+spec_sum  = Specific_sum(a)
+print(spec_sum[0],spec_sum[1])

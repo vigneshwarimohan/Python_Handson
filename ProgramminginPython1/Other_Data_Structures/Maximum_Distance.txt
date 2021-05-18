@@ -1,0 +1,46 @@
+Maximum Distance
+Description
+You will be given a list of repeated elements. You have to find the maximum distance between two same elements. The answer will be zero if there are no repeated elements.
+
+----------------------------------------------------------------------
+Input:
+A non-empty list of integers.
+
+Output:
+A single integer denoting the maximum distance between two same integers.
+
+----------------------------------------------------------------------
+Sample input:
+[1, 2, 3, 2, 5, 1, 2, 4, 6, 2, 7, 8, 6]
+
+Sample output:
+8
+
+Explanation:
+Max distance for 1: 5
+Max distance for 2: 8
+Max distance for 3: 0
+Max distance for 4: 0
+Max distance for 5: 0
+Max distance for 6: 4
+Max distance for 7: 0
+Max distance for 8: 0
+
+#Solution
+import ast
+import numpy as np
+a= ast.literal_eval(input())
+
+#start writing your code from here
+
+final = []
+values = np.array(a)
+unique_value = np.unique(values)
+for j in unique_value:
+    i = np.where(values == j)[0]
+    max_value = max(i)
+    min_value = min(i)
+    distance = max_value-min_value
+    #print("Distance",distance)
+    final.append(distance)
+print(max(final))

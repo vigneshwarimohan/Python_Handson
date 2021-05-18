@@ -1,0 +1,49 @@
+Square Root
+Description
+You will be given a positive integer n, you have to use binary search and find the square root of n.
+
+----------------------------------------------------------------------
+Input:
+A single positive integer n.
+0<n<=10000
+
+Output:
+The square root of n, accurate up to 4 decimal places.
+
+Hint: you may find round() function useful here.v
+
+----------------------------------------------------------------------
+Sample input:
+5
+
+Sample output:
+2.2361
+
+Explanation:
+The square root of 5 is 2.236067977..., upon rounding off to 4 decimals, we get 2.2361
+
+----------------------------------------------------------------------
+Sample input:
+9
+
+Sample output:
+3.0000
+
+#Solution
+n=int(input())
+#find square root of n here
+def square_root(n):
+    l=0
+    r=n
+    while(abs(l-r)>10**-5):
+        mid = (l+r)/2
+        #print("mid",mid)
+        if mid*mid>n:
+            r=mid
+        else:
+            l=mid
+        #print("l",l)
+        #print("r",r)
+        #print("abs",abs(l-r))
+    return round(mid,4)
+print("%.4f" %square_root(n))

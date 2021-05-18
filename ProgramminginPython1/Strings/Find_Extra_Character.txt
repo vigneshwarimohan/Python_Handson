@@ -1,0 +1,41 @@
+Find Extra Character
+Description
+Given two strings, one of the strings will contain an extra character. Find the extra character. The number of all the other characters in both the strings will be the same. Check the sample input/output for more clarification.
+
+The code will be case sensitive.
+
+----------------------------------------------------------------------
+Input:
+Two strings on two separate lines. 
+
+Output:
+One Character which is extra in one of the strings
+
+----------------------------------------------------------------------
+Sample input:
+abcd
+cedab
+
+Sample output:
+e
+#Solution
+#take input on your own
+string1=input()
+string2=input()
+
+
+#write code to find the extra character here
+
+#we will iterate over longer string
+#first we find longer string
+if len(string2)>len(string1):
+    longer=string2
+else:
+    longer=string1
+#we then iterate over longer string checking count
+#of that character in both strings
+
+for i in longer:
+    if string1.count(i)!=string2.count(i):
+        print(i)
+        break

@@ -1,0 +1,11 @@
+Write a program to accept 5 names from user and store these names into an array sort these array element in alphabetical order.
+
+#Solution
+import numpy as np
+x = input()
+a = []
+a = [i for i in x.split()]
+b = np.array(a)
+c = np.sort(b)
+print("Unsorted Array:", b )
+print("Unsorted Array:", c)

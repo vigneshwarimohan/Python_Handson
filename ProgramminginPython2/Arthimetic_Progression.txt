@@ -1,0 +1,47 @@
+Arithematic Progression
+Description
+In mathematics, an arithmetic progression (AP) or arithmetic sequence is a sequence of numbers such that the difference between the consecutive terms is constant. The difference here means the second minus the first. For instance, sequence 5, 7, 9, 11, 13, 15, . . . is an arithmetic progression with common difference of 2.
+Given any three terms of some random Arithematic progression and an integer key, you have to determine if the key will be present in the Arithematic sequence or no. check out sample input/output for more clarification.
+
+----------------------------------------------------------------------
+Input:
+The first line will contain three comma-separated integers representing three consecutive of some Arithmetic Progression
+The second line will have the integer key
+
+Output:
+True if the key is a part of that AP, False otherwise
+
+----------------------------------------------------------------------
+Sample input:
+9, 11, 13
+19
+
+Sample output:
+True
+
+----------------------------------------------------------------------
+Sample input:
+9, 11, 13
+20
+
+Sample output:
+False
+
+----------------------------------------------------------------------
+Sample input:
+9, 11, 13
+3
+
+Sample output:
+True
+
+#Solution
+import ast
+a = input()
+a = ast.literal_eval(a)
+x = int(input())
+d = a[1]-a[0]  
+if ((x - a[0]) % d == 0 & int((x - a[0]) / d) >= 0): 
+    print( "True") 
+else: 
+    print("False") 

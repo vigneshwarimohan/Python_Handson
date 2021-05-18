@@ -1,0 +1,9 @@
+Write a program to calculate the sum of digits of a given number.
+
+#Solution
+import numpy as np
+x = int(input())
+sum = 0
+for i in str(x):
+    sum = sum+int(i)
+print(sum)

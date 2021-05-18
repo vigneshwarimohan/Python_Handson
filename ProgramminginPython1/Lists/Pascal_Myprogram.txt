@@ -1,0 +1,30 @@
+Pascal Triangle:
+def cell(n,k):
+    #print("n",n)
+    #print("k",k)
+    a = factorial(n)
+    #print("a:",a)
+    b = factorial(k)
+    #print("b:",b)
+    c = factorial(n-k)
+    #print("c:",c)
+    fact = a/(b*c)
+    return(fact)
+
+def factorial(m):
+    ans=1   
+    if(m == 0):
+        return(1)
+    else:    
+         for i in range(1,m+1):
+            ans = i*ans
+    return(ans)
+
+k=0   
+Number = int(input())
+for line_num in range(0,Number):
+    for i in range(k,line_num+1):
+        pascal = cell(line_num,i) 
+        #pascal = list(int(pascal))
+        print(int(pascal),end = '')
+    print('\n')

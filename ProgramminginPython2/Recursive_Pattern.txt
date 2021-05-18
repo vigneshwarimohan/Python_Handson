@@ -1,0 +1,39 @@
+Recursive Pattern
+Description
+Given a positive integer 'n' and another positive integer 'k' (<n),  print the following pattern using recursion.
+
+Example:
+Input 1: n = 12, k = 5
+Output 2: 12, 7, 2, -3, 2, 7, 12
+
+Input 2: n = 10, k =2
+Output 2: 10, 8, 6, 4, 2, 0, 2, 4, 6, 8, 10
+
+Basically, you need to keep decrementing the given value of 'n' by 'k' until you encounter 0 or a negative number, in which case, you need to start incrementing by 'k' until you reach 'n' again.
+
+Format:
+Input: The first line contains the positive integer 'n'. The second line contains the positive integer 'k'.
+Output: The required pattern as comma-separated-values as shown in the examples above.
+
+#Solution
+n = int(input())
+k = int(input())
+
+# Function
+#def pattern():
+    # Write your recursive function here
+def recursive_pattern(n):
+    n= n-k
+    if(n==0) or (n<0):
+        print(n,end = ', ')
+    else:
+        print(n,end = ', ')
+        recursive_pattern(n)
+        print(n,end = ', ')
+
+if(n>0) and ( k >0):
+    print(n,end = ', ')
+    recursive_pattern(n)
+    print(n)
+else:
+    print(0)

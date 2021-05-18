@@ -1,0 +1,61 @@
+Rotated List
+Description
+To make the question a little more difficult, the sorted list with no repeated values is first 'rotated' and then passed as input. Everything else remains the same.
+Rotation of list is done by first selecting the pivot around which the list is then rotated. For eg- the sorted list is [10, 20, 30, 40, 50, 60, 70] and the pivot of rotation is index 2 (that is value 30) then the rotated list will look like [40, 50, 60, 70, 10, 20, 30]
+
+----------------------------------------------------------------------
+Input:
+Two lines of input, the first line contains a rotated list atmost once, and the second line contains a key that you have to find in the list.
+
+Note: The list can be rotated about the last element, meaning the list will remain sorted.
+
+Output:
+Index of the key in the rotated list if it is present, else -1.
+
+----------------------------------------------------------------------
+Sample input:
+[15, 16, 17, 18, 11, 12, 13, 14]
+12
+
+Sample output:
+5
+
+----------------------------------------------------------------------
+Sample input:
+[3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]
+17
+
+Sample output:
+7
+
+#Solution
+import ast
+sorted_list=input()
+sorted_list = ast.literal_eval(sorted_list)
+key=int(input())
+def rotated_list_search(sorted_list,key):
+    left = 0 #Left Pointer
+    right = len(sorted_list)-1 #Right Pointer
+    while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+        #print("Begin Left:",left)
+        #print("Begin Right",right)
+        middle = int((left+right)//2) #calculating the middle point
+        #print("Middle",middle)
+        if(sorted_list[middle] == key): #value of the middle point is equal to key then we found the match
+            return(middle)
+            #break
+        elif(sorted_list[left]<=sorted_list[middle]):
+            if((key >= sorted_list[left]) and (key < sorted_list[middle])):
+                right = middle-1
+                #print("right",right)
+            else:
+                left = middle+1
+                #print("left",left)
+        elif(sorted_list[left]>sorted_list[middle]):
+            if((key > sorted_list[middle]) and (key <= sorted_list[right])):
+                left = middle+1
+            else:
+                right = middle-1    
+    return(-1)
+    
+print(rotated_list_search(sorted_list,key))

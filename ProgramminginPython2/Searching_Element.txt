@@ -1,0 +1,47 @@
+Searching Element
+Description
+Searching a particular data entry from a big chunk a task you will encounter frequently.  In this question, you will be given a list of integers and a key element that you will have to find in the list. You will return the index or location of the key in the list or -1 if it is not present.
+
+----------------------------------------------------------------------
+Input:
+Two lines of input. The first line contains a list of integers, the second line contains an integer key that you have to find in the list
+
+Output:
+The index of the first occurrence of the key in the provided list, if it is present, and -1 otherwise.
+
+----------------------------------------------------------------------
+Sample input:
+[1, 2, 4, 2, 3, 2, 3, 3, 6, 7]
+3
+
+Sample output:
+4
+
+Explanation:
+The first occurrence of the key 3 is at index 4.
+
+----------------------------------------------------------------------
+Sample input:
+[1, 2, 3, 4, 5, 6]
+10
+
+Sample output:
+-1
+
+Explanation:
+Since 10 is not present in the given list, the output is -1
+
+#Solution
+
+import ast
+data_list=input()
+data_list = ast.literal_eval(data_list)
+key=int(input())
+
+for i in range(0,len(data_list)):
+    if (data_list[i] == key):
+        ind = i
+        break
+    else:
+        ind = -1
+print(ind)

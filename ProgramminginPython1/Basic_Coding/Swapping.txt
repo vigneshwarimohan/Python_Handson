@@ -1,0 +1,45 @@
+Swapping
+Description
+You are given two integer variables,  x and y. You have to swap the values stored in x and y.
+
+----------------------------------------------------------------------
+Input:
+Two numbers x and y separated by a comma.
+
+Output:
+Print 5 lines. The first two lines will have values of variables shown before swapping, and the last two lines will have values of variables shown after swapping. The third line will be blank.
+
+----------------------------------------------------------------------
+Sample input:
+20, 50
+
+Sample output:
+x before swapping: 20
+y before swapping: 50
+
+x after swapping: 50
+y after swapping: 20
+
+
+Execution Time Limit
+20 seconds
+
+#Take input using input()
+
+#input() takes input in form of the string
+in_string=input()
+
+#here extract the two numbers from the string
+swap_list = in_string.split(',')
+x = swap_list[0].strip()
+y = swap_list[1].strip()
+#print x and y before swapping
+print("x before swapping:",x)
+print("y before swapping:",y)
+#Writing your swapping code here
+x,y=y,x
+
+#print x and y after swapping
+print()
+print("x after swapping:",x)
+print("y after swapping:",y)

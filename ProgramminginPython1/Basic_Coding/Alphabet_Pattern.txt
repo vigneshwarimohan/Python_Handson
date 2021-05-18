@@ -1,0 +1,113 @@
+Alphabetic patterns
+Description
+Given a positive integer 'n' less than or equal to 26, you are required to print the below pattern 
+ 
+Sample Input: 5 
+ 
+Sample Output : 
+--------e-------- 
+------e-d-e------ 
+----e-d-c-d-e---- 
+--e-d-c-b-c-d-e-- 
+e-d-c-b-a-b-c-d-e 
+--e-d-c-b-c-d-e-- 
+----e-d-c-d-e---- 
+------e-d-e------ 
+--------e-------- 
+ 
+Sample Input  : 3 
+ 
+Sample Output : 
+----c---- 
+--c-b-c-- 
+c-b-a-b-c 
+--c-b-c-- 
+----c----
+
+Please note that this question was asked in a Data Scientist interview.
+
+
+import string
+alpha = string.ascii_lowercase
+
+m = int(input())
+#Check whether the entered input value should be between 1 to 26.
+
+if(m>0 and m <= 26):
+    s = 2*m-2 #Total number of hyphens to get printed in the front and back of each line
+    h = 2*m-1 #Total number of lines to get printed (line number)
+    l = 4*m-3 #Total number of characters to get printed in each line.
+    i = 0
+    j = 0 #Line number
+    s1 = 0
+    temp=""
+    k=1
+    k1=m-2
+#Iteration for each line starts here. 
+    while(j<=h-1):
+#-----------------------------------------------------------------------------------------------------------------------        
+#s= 0 means there is no hyphen in the start and the end of the line (d-c-b-a-b-c-d middle line of the pattern). if s>0 
+#it implies the lines to get printed above the middle line
+#------d------
+#----d-c-d----
+#--d-c-b-c-d--
+
+# If s<0 it implies the lines to get printed below the middle line.
+#--d-c-b-c-d--
+#----d-c-d----
+#------d------
+#-----------------------------------------------------------------------------------------------------------------------
+
+        if (s>0):
+        #print("j:",j)
+            if(j==0): #Pritning the first line
+                print("-"*s,end='')
+                print(alpha[m-1],end = '')
+                print("-"*s)
+            else:#Line number from 2nd line and to middle line
+                x = m
+                print("-"*s,end="")
+                for i in range(x,k1,-1):
+                    print(alpha[i-1], end="-")
+                for i in range(k1+2,x):
+                    print(alpha[i-1], end="-")
+                print(alpha[x-1],end="")
+                print("-"*s)
+                k1=k1-1
+            
+            j = j+1
+            s = s-2
+        #print(j)
+        #print(s)
+        else:
+#Handling the middle line it means space is zero. So this is our middle line(s==0).
+            if (s==0):
+                temp=""
+                for i in range(m,0,-1):
+                    temp=temp+str(alpha[i-1])+"-"#print (i, end='-')
+                for i in range(2,m,1):
+                    temp=temp+str(alpha[i-1])+"-"#print (i, end="-")
+                temp = temp + str(alpha[m-1])#print(m)
+
+
+                j = j+1
+                s = s-2
+                s1 = s1+2 #s1 denotes starting number of hyphen in the lines below midlle.
+                print(temp)
+                
+            else:# here s becomes less than 0(s<0). So the lines below the middle line till end will get printed.
+                if(j==(h-1)):
+                    print("-"*s1,end='')
+                    print(alpha[m-1],end = '')
+                    print("-"*s1)
+                else:
+                    print("-"*s1,end="")
+                    for i in range(m,k,-1):
+                        print(alpha[i-1], end="-")
+                    for i in range(k+2,m):
+                        print(alpha[i-1], end="-")
+                    print(alpha[m-1],end="")
+                    print("-"*s1)
+                    k=k+1
+                    s1=s1+2
+                j = j+1

@@ -1,0 +1,32 @@
+Fibonacci Series
+Description
+Compute and display Fibonacci series upto n terms where n is a positive integer entered by the user.
+You can go here to read about Fibonacci series.
+Sample Input:
+5
+Sample Output:
+0
+1
+1
+2
+3
+
+#Solution
+n=int(input())
+l = [0,1]
+cnt = n-2
+if (n>0):
+    if (n == 1):
+        l =[0]
+        #print(l)
+    else:
+        for i in range(0,cnt):
+            a = l[i]+l[i+1]
+            l.append(a)
+
+
+    for i in range(len(l)):
+        print(l[i])
+else:
+    exit()
+#write your code here

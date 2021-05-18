@@ -1,0 +1,63 @@
+Balanced Brackets
+Description
+You will be given a string with a lot of brackets. You have to print if the brackets are balanced or not. Remember, there are three types of brackets: ‘( )’,  ‘{ }’ and ‘[ ]’.
+
+----------------------------------------------------------------------
+Input:
+A string
+
+Output:
+Yes, if the brackets are balanced.
+No otherwise.
+
+----------------------------------------------------------------------
+Sample input:
+){[[]]}())()
+
+Sample output:
+No
+
+----------------------------------------------------------------------
+Sample input 2:
+[](){[]()(){}}
+
+Sample output 2:
+Yes
+
+#Solution
+braces = { '(': ')', '[': ']', '{': '}' }
+inp = input()
+open_brackets= '([{'
+close_brackets = ')}]'
+l = []
+length = len(inp)
+i = 0
+Flag = 0
+for i in inp:
+    if(len(l) == 0) and (i in close_brackets):
+        #print("Unbalanced")
+        Flag = 0
+        break
+    else:
+        #print("i",i)
+        if i in open_brackets:
+            l.append(i)
+            #print(l)
+        else:
+            length = len(l)
+            k = l[length-1]
+            c = braces[k]
+            #print("k",k)
+            #print("c:",c)
+            #print("i:",i)
+            if(c == i):
+                l.pop()
+                Flag =1
+            else:
+                Flag = 0
+                break
+            
+if(Flag == 1):
+    print("Yes")
+else:
+    print("No")

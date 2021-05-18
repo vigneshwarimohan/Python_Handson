@@ -1,0 +1,17 @@
+Description
+Sort a list of strings according to their length, with the smallest string appearing first.
+Hint: Use the appropriate ‘key’ in the sorted() function. If two strings are of the same length then their order — as in the original string — should be preserved.
+
+Example:
+Input 1:
+[‘I’, ‘love’, ‘to’, ‘code’, ‘in’, ‘Python’]
+Output 1:
+[‘I’, ‘to’, ‘in’, ‘love’, ‘code’, ‘Python’]
+
+
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+#input_list = ['I', 'love', 'to', 'code', 'in', 'Python']
+a = sorted(input_list,key = len)
+print(a)

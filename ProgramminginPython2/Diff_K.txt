@@ -1,0 +1,44 @@
+Diff K
+Description
+You have done the specific sum problem. Now it's time for a similar albeit slightly modified version of the same - Diff K. 
+
+Given a list 'L' of sorted integers and another non-negative integer k, find if there exist 2 indices i and j such that L[i] - L[j] = k, i != j.
+
+Format:
+Input: A single sorted list in the first line and the non-negative integer 'k' in the second line.
+Output: 'Yes' if there exist two such indices otherwise, 'No'.
+
+Examples:
+Input 1:
+[1, 3, 5, 6, 10]
+4
+Output 1:
+Yes
+
+Input 2:
+[1, 3, 5, 6, 10]
+8
+Output 2:
+No
+
+#Solution
+import ast 
+a = ast.literal_eval(input())
+k = int(input())
+n = len(a)
+def Specific_sum(a):
+    l=0
+    r=n-1
+    s=0
+    while(l<=r):
+        if(a[r]-a[l]==k):
+            #print(s)
+            return ("Yes")
+        elif((a[r]-a[l])>k):
+            r = r-1
+        else:
+            l=l+1
+    return("No")
+spec_sum  = Specific_sum(a)
+print(spec_sum)
+# Write your code here

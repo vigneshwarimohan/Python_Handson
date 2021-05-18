@@ -1,0 +1,29 @@
+Print numbers from -n to +n
+Description
+You’re given a positive number ‘n’ as an input. Write a recursive program to print all the numbers from -n to +n (including 0)
+Example:
+Input 1:
+3
+Output 1:
+-3
+-2
+-1
+0
+1
+2
+3
+
+
+#Solution
+# Read the input
+n = int(input())
+def recursive_range(n):
+    if(n == 0):
+        print(0)
+    else:
+        print(-n)
+        recursive_range(n-1)
+        print(n)
+    
+#n=int(input())
+recursive_range(n)

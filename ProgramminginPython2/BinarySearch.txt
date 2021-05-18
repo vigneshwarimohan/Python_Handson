@@ -1,0 +1,52 @@
+Binary Search
+Description
+You heard Sajan talk about a faster search method when the list we have is sorted. This is a much faster approach as the data you will normally deal with will have tens of thousands of entries, having a search algorithm what is faster will save a lot of computation power and will be faster.
+You can try your code here.
+
+----------------------------------------------------------------------
+Input:
+Two lines of input will be provided. The first line will have a sorted list with no repeated values, while the second line will have a key whose occurrence you have to find in the list.
+
+Output:
+Index of the key in the given list if it is present, else -1.
+
+----------------------------------------------------------------------
+Sample input:
+[3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]
+17
+
+Sample output:
+7
+
+----------------------------------------------------------------------
+Sample input:
+[3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]
+1
+
+Sample output:
+-1
+
+#Solution
+import ast
+sorted_list=input()
+sorted_list = ast.literal_eval(sorted_list)
+key=int(input())
+def binary_search(sorted_list,key):
+    left = 0 #Left Pointer
+    right = len(sorted_list)-1 #Right Pointer
+    while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+        middle = int((left+right)/2) #calculating the middle point
+        if(sorted_list[middle] == key): #value of the middle point is equal to key then we found the match
+            return(middle)
+            break
+        #if the key is less than the value in the middle point it means the key is found in the first half and the right pointer has to 
+        #be moved towards the middle point
+        elif(key<sorted_list[middle]):         
+            right = middle-1
+        #if the key is more than the value in the middle point it means the key is found in the second half and the left pointer has to 
+        #be moved towards the middle point
+        else:
+            left = middle+1
+    return(-1)
+    
+print(binary_search(sorted_list,key))

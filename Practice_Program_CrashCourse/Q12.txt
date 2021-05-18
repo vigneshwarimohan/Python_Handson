@@ -1,0 +1,13 @@
+Write a  program to accept a sentence from the user and reverse its each word.
+
+#Solution
+
+import numpy as np
+x = input("Enter a Sentence:")
+new_list = x.split(" ")
+y = ""
+for i in new_list:
+    y+=str(i[::-1])
+    y = y + " "
+
+print(y)

@@ -1,0 +1,47 @@
+How Many Chocolates?
+Description
+Sanjay loves chocolates. He goes to a shop to buy his favourite chocolate. There he notices there is an offer going on, upon bringing 3 wrappers of the same chocolate, you will get new chocolate for free. If Sanjay has m Rupees. How many chocolates will he be able to eat if each chocolate costs c Rupees?
+
+----------------------------------------------------------------------
+Input:
+Two positive integers m and c separated by a comma. The first integer is m and the second integer is c 
+
+Output:
+A single integer denoting the number of chocolates Sanjay was able to eat in total.
+
+----------------------------------------------------------------------
+Sample input:
+15, 2
+
+Sample output:
+10
+
+Explanation:
+First, he will get 15/2=7 chocolates. He then will return 6 wrappers for 2 chocolates. And lastly, these two wrappers and the one he previously had will get him one more chocolate, making a total of 7+2+1=10 chocolates.
+
+----------------------------------------------------------------------
+Sample input:
+3,1
+
+Sample output:
+4
+
+
+
+#Solution
+my_input = input()
+my_list = my_input.split(",")
+m=int(my_list[0])
+p =int(my_list[1])
+c = 0
+No_0f_Choc = m//p
+c = c+No_0f_Choc
+Tot = c
+while(Tot//3 > 0):
+        wrap = Tot%3
+        wrap_choc = Tot//3
+        c=wrap_choc+c
+        if(wrap_choc != 0):
+            wrap = wrap+wrap_choc
+            Tot = wrap
+print(c)

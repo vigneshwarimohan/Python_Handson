@@ -1,0 +1,59 @@
+upGrad String
+Description
+For the purpose of this question, we will define something called an upGrad string. Note that this definition is not valid outside this question. A string upGrad string if the frequency of its characters is something like 1, 2, 3, 4, .... That is a character appears only once, another appears twice, another appears thrice and so on. For example string '$yrr$ssrsr' is a beautiful string since the frequency of y:1, $:2, s:3, r:4, however string '$yrr$ssrsr%' will not be beautiful since it has two characters (y and %) with frequency 1. The frequency of characters should be of form 1, 2, 3, 4, 5... only.
+Given a string, can you determine if the string is upGrad string or no?
+
+
+Input:
+A string
+
+Output:
+Boolean depending whether the string is upGrad string or not
+
+
+Sample input:
+$yrr$ssrsr
+
+Sample output:
+True
+
+
+Sample input:
+$yrr$ssrsr%
+
+Sample output:
+False
+
+Sample input:
+ab#ab#aba
+
+Sample output:
+False
+
+Sample input:
+ab#ab#ab6a
+
+Sample output:
+True
+
+#Solution
+a = input() 
+a = list(a)
+#d = {}
+output = {}
+for item in a:
+    #print(a)
+    if item not in output:
+        output[item] = 1
+    else:
+        output[item] +=1
+#print("ouptu",output)
+final = {k: v for k, v in sorted(output.items(), key=lambda item: item[1])}
+#print("Final_Dict",final)
+#print("Final Key",final.keys())
+#print("\n")
+my_list = list(final.values())
+#print(my_list)
+
+x = range(1,len(my_list)+1)
+print(my_list == list(x))

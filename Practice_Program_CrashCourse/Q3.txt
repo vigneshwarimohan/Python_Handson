@@ -1,0 +1,11 @@
+Write a  program to accept ‘n’ numbers from user , store these numbers into an array and sort the numbers of an array using function.
+
+#Solution
+import numpy as np
+x = input()
+a = []
+a = [i for i in x.split()]
+b = np.array(a)
+c = np.sort(b)
+print("Unsorted Array:", b )
+print("Unsorted Array:", c)

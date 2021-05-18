@@ -1,0 +1,36 @@
+Sort a vector of 0s, 1s, and 2s
+Description
+Write a code to sort a listof 0s, 1s, and 2s. Note that the time complexity should be O(n). 
+Note: Do not use the built-in sorted() function.
+
+Example:
+Input 1:
+[0, 2, 0, 0, 1, 1, 2, 0, 1]
+Output 1:
+[0, 0, 0, 0, 1, 1, 1, 2, 2]
+
+#Solution
+import ast,sys
+input_str = sys.stdin.read()
+l = ast.literal_eval(input_str)
+
+# Write your code here
+n=len(l)
+start = mid = 0
+pivot = 1
+end = n-1
+    
+for i in range(n-1):
+
+    while mid <= end:
+        if l[mid] < pivot:    
+            l[start], l[mid] = l[mid],l[start]
+            start = start + 1
+            mid = mid + 1
+        elif l[mid] > pivot: 
+            l[mid], l[end] = l[end],l[mid]
+            #swap(A, mid, end)
+            end = end - 1
+        else:                
+            mid = mid + 1
+print(l)

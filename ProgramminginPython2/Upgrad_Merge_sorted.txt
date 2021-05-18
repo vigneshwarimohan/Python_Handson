@@ -1,0 +1,46 @@
+Merge Sorted Lists
+Description
+Until now you have been doing problems with just one iterator. Now, let's add another dimension to our coding skills with a few problems where it will be easier and faster to do similar things with two iterators. You are given two sorted lists. You have to merge those such that the output is also sorted. Now, of course, you can merge and then use the sorted function. But that would be doing it in O(n*log(n)) Time and wheres the fun in that. Let's see if you can do it in O(n).
+
+
+Input:
+Two lines of input 
+Each line will have a sorted list
+
+Output:
+Sorted merged list 
+
+
+Sample input:
+[1, 3, 5, 7, 9, 10]
+[2, 3, 4, 5, 6, 8, 11, 12, 13]
+
+Sample output:
+[1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
+#Solution
+#take input on your own
+import ast
+
+list1 = ast.literal_eval(input())
+list2 = ast.literal_eval(input())
+
+#write code to find merged list
+l1 = len(list1)
+l2 = len(list2)
+
+result_list = []
+i=0
+j=0
+
+while i<l1 and j<l2:
+    if list1[i]<=list2[j]:
+        result_list.append(list1[i])
+        i=i+1
+    else:
+        result_list.append(list2[j])
+        j=j+1
+
+result_list = result_list + list1[i:] + list2[j:]
+
+print(result_list)

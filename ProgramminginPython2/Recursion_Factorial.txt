@@ -1,0 +1,40 @@
+Recursion Factorial
+Description
+Earlier you found factorial using loops. Here you have to apply the theory of recursive functions to find the factorial of a positive integer.
+
+----------------------------------------------------------------------
+Input:
+A positive integer num.
+
+Output:
+The value of num factorial, num!.
+
+Note: 0!=1.
+
+----------------------------------------------------------------------
+Sample input:
+3
+
+Sample output:
+6
+
+----------------------------------------------------------------------
+Sample input:
+5
+
+Sample output:
+120
+
+#Solution
+num=int(input())
+#write the recurssive function to find the factorial of num
+def factorial(n):
+    #find and RETURN factorial of num
+    if(n == 0):
+        return(1)
+    elif(n>0):
+        return(n*factorial(n-1))
+    else:
+        return(-1)
+#function ends here
+print(factorial(num))

@@ -1,0 +1,48 @@
+Common Prefix
+Description
+You will be given two strings. You have to find the largest prefix common in both the strings.
+
+----------------------------------------------------------------------
+Input:
+Two lines of input, one string on each line
+
+Output:
+The common largest prefix for both strings. Check sample input/output for clarification. -1 if no prefix is common.
+
+----------------------------------------------------------------------
+Sample input:
+abshdksajd
+abshiehand
+
+Sample output:
+absh
+
+----------------------------------------------------------------------
+Sample input:
+upgradData
+upGradScience
+
+Sample output:
+upgrad
+
+----------------------------------------------------------------------
+Note: the last sample input/output clearly shows the code is not case sensitive.
+
+#Solution
+#input has been taken for you
+string1=input()
+string2=input()
+a = len(string1)
+b = len(string2)
+c= min(a,b)
+string1 = string1.lower()
+string2 = string2.lower()
+
+for i in range(c):
+    if(string1[i]!=string2[i]):
+        break
+#print(i)
+if(i==0):
+    print(-1)
+else:
+    print(string1[:i])

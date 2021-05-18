@@ -1,0 +1,11 @@
+Write a program to accept a string value from the user and accept a char value from the user and and find out the total occurrence of char value in the string value.
+
+#Solution
+import numpy as np
+x = input("Enter a String:")
+y = input("Enter a Character:")
+cnt = 0
+for i in x:
+    if i==y:
+        cnt+=1
+print("The character", y, "is present" ,cnt, "times")

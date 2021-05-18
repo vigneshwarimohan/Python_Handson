@@ -1,0 +1,21 @@
+Custom Sort
+Description
+Sort a list of integers basis the remainder they leave when divided by 5 in an ascending order, i.e. the number that leaves a lower remainder when divided by 5 should come before the number which leaves a higher remainder.
+
+Hint: Use the appropriate ‘key’ in the sorted() function. If two integers leave the same remainder then their order — as in the original list — should be preserved.
+
+Examples:
+Input 1:
+[1, 9, 35, 12, 13, 21, 10]
+Output 1:
+[35, 10, 1, 21, 12, 13, 9]
+
+#Solution
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+def func(x):
+     return x % 5
+
+a = sorted(input_list,key = func)
+print(a)

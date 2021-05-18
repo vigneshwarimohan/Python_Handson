@@ -1,0 +1,39 @@
+Reverse Words
+Description
+You will be given a sentence in the form of a string. You have to reverse the order of the words in the sentence. Remember not to reverse the individual words, but the order of words. Check the sample input-output for further clarification.
+
+----------------------------------------------------------------------
+Input:
+A string, which will consist of a few spaces.
+
+Output:
+The words in reverse order.
+
+----------------------------------------------------------------------
+Sample input:
+I love coding in python
+
+Sample output:
+python in coding love I
+
+----------------------------------------------------------------------
+Sample input:
+python is super easy and fun
+
+Sample output: Method1
+fun and easy super is python
+
+#Solution
+sentence=input()
+a = sentence.split(" ")
+#print(a)
+b = ' '.join(a[::-1])
+print(b)
+
+Method2:
+sentence=input()
+a = sentence.split(" ")
+#print(a)
+a.reverse()
+b = ' '.join(a)
+print(b)

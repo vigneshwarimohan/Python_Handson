@@ -1,0 +1,20 @@
+Write a program to accept ‘n’ numbers from user and store these numbers into an array and count the number of occurrences of each number.
+
+#Solution
+
+import numpy as np
+n=int(input("Enter a number"))
+n
+a = []
+for i in range(n):
+    k = input()
+    a.append(k)
+a.sort()
+print(a)
+my_array = np.array(a)
+print("Array:",my_array)
+s=1
+k = np.unique(my_array)
+print("Unique Elements:",k)
+for i in range(len(k)):
+    print("The element",k[i],"occurs",a.count(k[i]))

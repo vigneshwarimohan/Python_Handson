@@ -1,0 +1,5 @@
+Write a program to calculate the sum of first digit and last digit of a given number
+
+import numpy as np
+x = input()
+print(int(x[0])+int(x[-1]))

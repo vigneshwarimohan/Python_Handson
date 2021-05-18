@@ -1,0 +1,26 @@
+Armstrong number
+Description
+Any number, say n is called an Armstrong number if it is equal to the sum of its digits, where each is raised to the power of number of digits in n.
+For example:
+153=1^3+5^3+3^3
+
+Write Python code to determine whether an entered three digit number is an Armstrong number or not. 
+Assume that the number entered will strictly be a three digit number.
+Print "True" if it is an Armstrong number and print "False" if it is not.
+Sample Input:
+153
+Sample Output:
+True
+
+#Solution
+x = int(input())
+a = [int(i) for i in str(x)]
+if (len(a) == 3):
+    cube = [j*j*j for j in a]
+    armstrong = sum(cube)
+    if (x == armstrong):
+        print('True')
+    else:
+        print('False')
+else:
+    exit()
