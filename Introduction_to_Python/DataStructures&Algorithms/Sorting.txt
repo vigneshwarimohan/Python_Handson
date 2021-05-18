@@ -1,0 +1,20 @@
+Using the Built-in Sort Function
+Description
+Sort a list of strings according to their length, with the smallest string appearing first.
+Hint: Use the appropriate ‘key’ in the sorted() function. If two strings are of the same length then their order — as in the original string — should be preserved.
+
+Example:
+Input 1:
+[‘I’, ‘love’, ‘to’, ‘code’, ‘in’, ‘Python’]
+Output 1:
+[‘I’, ‘to’, ‘in’, ‘love’, ‘code’, ‘Python’]
+
+
+#Solution
+def Sorting(lst): 
+    x = sorted(lst, key=len) 
+    return x 
+      
+# Driver code 
+input_list =  ['I', 'love', 'to', 'code', 'in', 'Python'] 
+print(Sorting(input_list))

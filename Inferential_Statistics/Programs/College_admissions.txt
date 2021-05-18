@@ -1,0 +1,27 @@
+College admissions
+The probability that a college will accept a student's application is x.
+Consider that m students have applied to college. You have to find the probability that at most n students are accepted by the college.
+The input will contain three lines with x, m and n respectively.
+The output should be rounded off to four decimal places.
+Sample Input:
+0.3
+5
+2
+Sample Output:
+0.8369
+
+Solution
+x=float(input())#number of applicants
+m=int(input())#probability of accepting an application
+n=int(input())#find the probability that at most n applications are accepted
+#write your code here
+
+#Introducing the scipy.stats library
+import scipy.stats as ss
+s = 0
+i = 0
+while(i<=n):
+    s = s+ss.binom.pmf(i,m,x)
+    i=i+1
+print(round(s,4))
+    

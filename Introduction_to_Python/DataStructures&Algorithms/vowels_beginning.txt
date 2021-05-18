@@ -1,0 +1,44 @@
+Shift vowels to beginning
+Description
+Write a program that receives a string and shifts all the vowels present in it to the beginning. Output the resultant string. The order of all the vowels with respect to each other as well as the order of all the other charcaters with respect to each other should stay the same.
+
+Example:
+Input 1:
+You love Python!
+Output 1:
+ouoeoY lv Pythn!
+
+Explanation: All the vowels have been shifted to the beginning in order. The order of all the other characters remains the same.
+
+#Solution
+sentence = input('Enter your sentence: ' )
+for letter in sentence:
+    if letter in 'aeiou':
+        print(letter,end = "")
+for letter in sentence:
+    if letter not in 'aeiou':
+        print(letter,end = "")
+-----------------------------------------------------------------------------------------------------------------		
+#Solution 2
+
+# Read the input string 
+s = input()
+# Declare two empty strings: "vowel" and "others" which will contain all the vowels
+# and the other characters respectively
+vowel = ""
+others = ""
+# Run a loop throughout the length of the string 
+for i in range(len(s)):
+# If the current character is a vowel, append it to the vowel string
+    if s[i] in "aeiou":
+        vowel = vowel + s[i]
+       
+# Else, append it to the others string
+    else:
+        others = others + s[i]
+
+# Add the vowel and others string in order and store it in a new variable - final        
+final = vowel + others
+
+# Print the value of the final string
+print(final)

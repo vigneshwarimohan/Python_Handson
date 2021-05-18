@@ -1,0 +1,18 @@
+Map Function
+Description
+Using the function Map, count the number of words that start with ‘S’ in input_list.
+Sample Input:
+
+['Santa Cruz','Santa fe','Mumbai','Delhi']
+Sample Output:
+
+2
+
+#Solution
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+sample_map=list(map(lambda input_list: input_list.startswith('S'),input_list))
+count = sum(sample_map) 
+#print(sample_map)
+print(count)

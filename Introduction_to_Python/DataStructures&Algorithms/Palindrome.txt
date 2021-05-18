@@ -1,0 +1,19 @@
+Palindrome String
+Description
+Write a program to check whether a string is a palindrome or not. Print 1 if the string is a palindrome and 0 otherwise.
+
+Note: Please ensure that your program is not case-sensitive. So, if the input is, say, “HAnnah”, then, its output should be 1.
+
+#Solution
+
+import re
+def reverseWords(s):
+    return (s[::-1])
+#a = "racecar"
+a = input()
+a =a.lower()
+b = reverseWords(a)
+if re.match(b,a):
+   print('1')
+else:
+   print('0')

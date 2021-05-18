@@ -1,0 +1,23 @@
+Find the non-repeating integer
+Description
+Given an array, all the numbers appear twice — except one. Find the non-repeating number. (Hint: Use Bitwise Operators)
+
+Example:
+Input 1:
+[2, 2, 7, 7, 1, 1, 3, 9, 9]
+Output 1:
+3
+
+
+#Solution
+def getSingle(a):
+    x = a[0]
+    for i in range(1,l):
+     x = x^a[i]
+    return(x)
+a = [1,2,3,2,1]
+print("Entered Array:",a)
+l = len(a)
+print(l)
+print("The element with single occurrence is "
+      ,getSingle(a)) 

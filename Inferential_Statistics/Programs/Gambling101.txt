@@ -1,0 +1,58 @@
+Gambling 101
+You are participating in a lottery game. A deck of cards numbered from 1-50 is shuffled and 5 cards are drawn out and laid out. You are given a coin. For each card, you toss the coin and pick it up if it says heads, otherwise you don't pick it up. The sum of the cards is what you win.
+The lottery ticket costs c rupees. If the expected value of the sum of cards you pick up is less than the lottery ticket, then you buy another ticket otherwise you don't.
+
+Input Format:
+The first 5 lines of the input will contain 5 numbers between 1 to 50.
+The next line will contain c, the cost of lottery ticket.
+Output Format:
+Print "Don't buy another" if the expected value is less than the ticket price and print "Buy another one" if the expected value is more than the ticket price.
+
+Sample Input:
+1
+4
+6
+17
+3
+23
+Sample Output:
+Don't buy another
+
+Note: You have to take input using the input() function. For your practice with taking inputs, the stub will be empty.
+subjectSample Solution
+
+Solution:
+l = []
+n1 = int(input())
+l.append(n1)
+n2 = int(input())
+l.append(n2)
+n3 = int(input())
+l.append(n3)
+n4 = int(input())
+l.append(n4)
+n5 = int(input())
+l.append(n5)
+c = int(input())
+#print(l)
+s=0
+for elem in l:
+    s = s+(elem*0.5)
+    #print("S",s)
+#print(s)
+if(s>c):
+    #print("s in lopp:",s)
+    print("Buy another one")
+else:
+    #print("s in lopp:",s)
+    print("Don't buy another")
+	
+********************************************************************************************************
+Upgrad Solution
+sum=0
+for i in range(0,5):
+    sum=sum+int(input())/2
+if sum<=int(input()):
+    print("Don't buy another")
+else:
+    print("Buy another one")	

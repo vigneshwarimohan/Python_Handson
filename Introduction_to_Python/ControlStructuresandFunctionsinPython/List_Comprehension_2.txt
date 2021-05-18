@@ -1,0 +1,22 @@
+List Comprehensions
+Description
+Extract the words that start with a vowel from a list input_list=[wood, old, apple, big, item, euphoria] using list comprehensions.
+Sample Input:
+
+['wood','old','apple','big','item','euphoria']
+
+Sample Output:
+
+﻿['old', 'apple', 'item', 'euphoria']
+
+#Solution
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+
+list_vowel = [i for i in input_list if ((i.startswith ('a')) or (i.startswith ('e') )or
+(i.startswith ('i')) or (i.startswith ('o')) or (i.startswith ('u')) or (i.startswith ('A')) or (i.startswith ('E') )or
+(i.startswith ('I')) or (i.startswith ('O')) or (i.startswith ('U')))]
+# [Type your answer here]
+
+print(list_vowel)

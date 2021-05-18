@@ -1,0 +1,19 @@
+List of Values in a Dictionary.
+Description
+Create a SORTED list of all values from the dictionary input_dict = {'Jack Dorsey' : 'Twitter' , 'Tim Cook' : 'Apple','Jeff Bezos' : 'Amazon' ,'Mukesh Ambani' : 'RJIO'}
+
+Sample Input:
+
+{'Jack Dorsey' : 'Twitter' , 'Tim Cook' : 'Apple','Jeff Bezos' : 'Amazon' ,'Mukesh Ambani' : 'RJIO'}
+
+Sample Output:
+
+﻿['Amazon', 'Apple', 'RJIO', 'Twitter']
+
+#Solution
+import ast,sys
+input_str = sys.stdin.read()
+input_dict = ast.literal_eval(input_str)
+answer = input_dict.values()
+a = sorted(answer)
+print(a)

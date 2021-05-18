@@ -1,0 +1,20 @@
+Dict_Error
+Description
+From a Dictionary input_dict={'Name': 'Monty', 'Profession': 'Singer' }, get the value of a key ‘Label’ which is not a part of the dictionary, in such a way that Python doesn't hit an error. If the key does not exist in the dictionary, Python should return 'NA'.
+
+Sample Input:
+
+{'Name': 'Monty', 'Profession': 'Singer' }
+
+Sample Output:
+NA
+
+#Solution
+import ast,sys
+input_str = sys.stdin.read()
+input_dict = ast.literal_eval(input_str)
+# Using the value directly can cause an error.
+try:
+   print(input_dict['Label'])
+except KeyError:
+   print("NA")

@@ -1,0 +1,20 @@
+Tossing a coin
+Given that you are tossing a coin n times, you have to find the probability of getting heads at most m times.
+The input will have two lines containing n and m respectively.
+Sample Input:
+10
+2
+Sample Output:
+0.0547
+
+Solution
+n=int(input())#number of trials
+m=int(input())# find the probability of getting at most m heads
+
+import scipy.stats as ss
+s = 0
+i = 0
+while(i<=m):
+    s = s+ss.binom.pmf(i,n,0.5)
+    i=i+1
+print(round(s,4))

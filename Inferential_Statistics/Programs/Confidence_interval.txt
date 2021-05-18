@@ -1,0 +1,26 @@
+Confidence Intervals
+For a given column in a dataframe, you have to calculate the 90 percent confidence interval for its mean value. (You can find Z* value for 90 percent confidence from previous segments)
+The input will have the column name. 
+The output should have the confidence interval printed as a tuple.
+Note: Do not use the inbuilt function via statmodels.api or any other libraries. You should write the code on your own to get accurate answers.
+The confidence interval values have to be approximated up to two decimal places.
+Sample Input:
+GRE Score
+
+Sample Output:
+(315.87, 317.75)
+
+Solution
+import pandas as pd 
+import numpy as np
+import math
+df=pd.read_csv("https://media-doselect.s3.amazonaws.com/generic/N9LKLvBAx1y14PLoBdL0yRn3/Admission_Predict.csv")
+col = input()
+mean_value = df[col].mean()
+st_dev = df[col].describe()[2]
+con_inter1 = mean_value - (1.65*st_dev)/math.sqrt(df[col].describe()[0])
+con_inter2= mean_value +(1.65*st_dev)/math.sqrt(df[col].describe()[0])
+a = (round(con_inter1,2),round(con_inter2,2))
+#print(round(con_inter1,2),round(con_inter2,2))
+#print(round(con_inter2,2))
+print(a)

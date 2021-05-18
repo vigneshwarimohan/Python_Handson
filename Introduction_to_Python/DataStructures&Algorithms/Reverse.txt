@@ -1,0 +1,4 @@
+Reverse a Number using indexing
+x = input("Enter a number")
+Y = x[::-1]
+Y

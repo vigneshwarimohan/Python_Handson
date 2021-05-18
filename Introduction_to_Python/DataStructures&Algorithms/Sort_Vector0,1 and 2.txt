@@ -1,0 +1,32 @@
+Sort a vector of 0s, 1s, and 2s
+Description
+Write a code to sort a listof 0s, 1s, and 2s. Note that the time complexity should be O(n). 
+Note: Do not use the built-in sorted() function.
+
+Example:
+Input 1:
+[0, 2, 0, 0, 1, 1, 2, 0, 1]
+Output 1:
+[0, 0, 0, 0, 1, 1, 1, 2, 2]
+
+#Solution
+V = [0, 2, 0, 0, 1, 1, 2, 0, 1]
+n=len(V)
+start = mid = 0
+pivot = 1
+end = n-1
+    
+for i in range(n-1):
+
+    while mid <= end:
+        if A[mid] < pivot:    
+            A[start], A[mid] = A[mid],A[start]
+            start = start + 1
+            mid = mid + 1
+        elif A[mid] > pivot: 
+            A[mid], A[end] = A[end],A[mid]
+            #swap(A, mid, end)
+            end = end - 1
+        else:                
+            mid = mid + 1
+print(A)

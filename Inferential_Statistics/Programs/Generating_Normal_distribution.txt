@@ -1,0 +1,29 @@
+Generating normal distribution
+Generate an array of real numbers representing a normal distribution. You will be given the mean and standard deviation as input. You have to generate 10 such numbers.
+Hint: You can use numpy's np.random here.  You can read more about it here.
+To keep the output consistent, you have to set the seed as a specific number which will be given to you as input. Setting a seed means that every time you generate random numbers, they will be the same for the same seed. You can read more about it here.
+
+Input Format:
+The input will contain 3 lines which have the seed, mean and standard deviation of the distribution in the same order.
+The output will be a numpy array of the generated normal distribution.
+
+Sample Input:
+1
+0
+0.1
+
+Sample Output:
+[ 0.16243454 -0.06117564 -0.05281718 -0.10729686  0.08654076 -0.23015387
+  0.17448118 -0.07612069  0.03190391 -0.02493704]
+  
+Solution
+import numpy as np 
+seed=int(input())
+mean=float(input())#mu
+std_dev=float(input())#sigma
+#write your code here
+#seed = 100
+np.random.seed(seed)
+#s = #store your result here.
+s = np.random.normal(mean,std_dev,10)
+print(s)  
