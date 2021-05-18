@@ -1,0 +1,11 @@
+Array 'arange' Function
+Description
+Create an array of first 10 multiples of 5 using the 'arange' function.
+Execution Time Limit
+15 seconds
+
+#Solution
+import numpy as np
+array_multipleof5 = np.arange(start=5, stop=55, step=5)
+
+print(array_multipleof5)

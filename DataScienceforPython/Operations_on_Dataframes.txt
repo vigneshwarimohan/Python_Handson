@@ -1,0 +1,29 @@
+Operations on multiple dataframes
+Description
+Given three data frames containing the number of gold, silver, and bronze Olympic medals won by some countries, determine the total number of medals won by each country. 
+Note: All the three data frames don’t have all the same countries. So, ensure you use the ‘fill_value’ argument (set it to zero), to avoid getting NaN values. Also, ensure you sort the final dataframe, according to the total medal count in descending order.
+
+import numpy as np 
+import pandas as pd
+
+# Defining the three dataframes indicating the gold, silver, and bronze medal counts
+# of different countries
+gold = pd.DataFrame({'Country': ['USA', 'France', 'Russia'],
+                         'Medals': [15, 13, 9]}
+                    )
+silver = pd.DataFrame({'Country': ['USA', 'Germany', 'Russia'],
+                        'Medals': [29, 20, 16]}
+                    )
+bronze = pd.DataFrame({'Country': ['France', 'USA', 'UK'],
+                        'Medals': [40, 28, 27]}
+                    )
+gold.set_index(['Country'],inplace = True)
+
+silver.set_index(['Country'],inplace = True)
+
+bronze.set_index(['Country'],inplace = True)
+
+df3 = gold.add(silver, fill_value= 0)
+df3 = df3.add(bronze, fill_value= 0)
+df3 = df3.sort_values('Medals', ascending = False)
+print(df3)

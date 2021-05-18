@@ -1,0 +1,9 @@
+Dataframe Pivot Table
+Description
+Group the data 'df' by 'month' and 'day' and find the mean value for column 'rain' and 'wind' using the pivot table command.
+
+import numpy as np
+import pandas as pd
+df = pd.read_csv('https://query.data.world/s/vBDCsoHCytUSLKkLvq851k2b8JOCkF')
+df_1 = pd.pivot_table(data=df, index=['month', 'day'], values=['rain', 'wind'], aggfunc={'rain': 'mean', 'wind': 'mean'})
+print(df_1.head(20))

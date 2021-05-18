@@ -1,0 +1,15 @@
+Loading a csv with index
+Description
+Using the file ‘marks.csv’, create a dataframe as shown below.
+
+
+
+You must be able make the first column of the file as the index and name it 'S.No.'. Also, the columns must be renamed as shown in the image.
+
+
+import numpy as np
+import pandas as pd
+df = pd.read_csv('https://media-doselect.s3.amazonaws.com/generic/A08MajL8qN4rq72EpVJbAP1Rw/marks_1.csv',sep = '|', header = None,index_col = 0)
+df.index.name = 'S.No.'
+df.columns = ['Name','Subject','Maximum Marks','Marks Obtained','Percentage']
+print(df)

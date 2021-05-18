@@ -1,0 +1,45 @@
+Stacking arrays
+Description
+Merge the three arrays provided to you to form a one 4x4 array.
+
+[Hint: Check the function np.transpose() in the 'Manipulating Arrays' notebook provided.]
+Input:
+Array 1: 3*3
+[[7, 13, 14]
+[18, 10, 17]
+[11, 12, 19]]
+
+Array 2: 1-D array
+[16, 6, 1]
+Array 3: 1*4 array
+[[5, 8, 4, 3]]
+
+Output:
+[[7 13 14 5]
+[18 10 17 8]
+[11 12 19 4]
+[16 6 1 3]]
+
+#Solution
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+list_1 = input_list[0]
+list_2 = input_list[1]
+list_3 = input_list[2]
+#print(input_list[0])
+# Import NumPy
+import numpy as np
+a = np.array([input_list[0]]).reshape(-1)
+#print(a)
+b = np.array([input_list[1]]).reshape(-1)
+#print(b)
+k = np.hstack((a,b)).reshape(4,3)
+c = np.array([list_3])
+c = (c.T).reshape(-1,c.shape[1])
+#print(c)
+#c = (input_list[2].T).reshape(-1,input_list[2].shape[1])
+final_array = np.array([np.hstack((k,c))])
+print(final_array.reshape(4,4))
+#print(final_array.reshape(4,4))
+# Write your code here

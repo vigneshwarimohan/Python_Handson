@@ -1,0 +1,36 @@
+Swap two rows
+Description
+Given m and n, swap the mth and nth rows of the 2-D NumPy array given below.
+
+a = [[4 3 1]
+         [5 7 0]
+         [9 9 3]
+         [8 2 4]]
+
+Example:
+Input 1:
+0
+2
+Output 1:
+[[9 9 3] 
+ [5 7 0] 
+ [4 3 1] 
+ [8 2 4]] 
+ 
+#Solution
+import numpy as np 
+
+# Given array
+a = np.array([[4, 3, 1], [5, 7, 0], [9, 9, 3], [8, 2, 4]])
+
+# Read the values of m and n
+import sys
+lines = sys.stdin.readlines()
+m = int(lines[0])
+n = int(lines[1])
+a[[m, n]] = a[[n, m]]
+
+# Write your code for swapping here
+
+# Print the array after swapping
+print(a)

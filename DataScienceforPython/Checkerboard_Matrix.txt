@@ -1,0 +1,29 @@
+Checkerboard Matrix
+Description
+Given an even integer ‘n’, create an ‘n*n’ checkerboard matrix with the values 0 and 1, using the tile function.
+Note: Please refer to the 'Creating NumPy Arrays' notebook provided to understand the usage of the tile function in NumPy.
+
+Format:
+Input: A single even integer 'n'.
+Output: An 'n*n' NumPy array in checkerboard format.
+
+Example:
+Input 1:
+2
+Output 1:
+[[0 1]
+ [1 0]]
+Input 2:
+4
+Output 2:
+[[0 1 0 1] 
+ [1 0 1 0]
+ [0 1 0 1]
+ [1 0 1 0]]
+ 
+#Solution
+import numpy as np
+# Read the variable from STDIN
+n = int(input())
+checkerboard = np.tile(np.array([[0,1],[1,0]]), (n//2, n//2))
+print (checkerboard)

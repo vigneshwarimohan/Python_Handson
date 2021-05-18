@@ -1,0 +1,42 @@
+Manual Indexing
+Description
+Create a panda series that contains the first ‘n’ natural numbers and their respective squares. The first ‘n’ numbers should appear in the index position.
+Hint: Use manual indexing.
+ 
+Format:
+Input: A natural number 'n'
+Output: A pandas series with the first 'n' natural numbers in the index position and their respective squares in the adjacent column.
+
+Example:
+Input 1:
+4
+Output 1:
+1  1 
+2  4 
+3  9 
+4  16 
+dtype: int64
+
+n = int(input())
+import numpy as np 
+import pandas as pd 
+arrays = np.array([np.arange(start=1, stop=n+1)]) # generating array of n natural numbers starting from 1
+oned = arrays.reshape(-1) # Reshaping it to 1 dimensional array as we need to handle it in pd.series
+b = oned ** 2 # calculating squares for each number in the array
+s2 = pd.Series(b,index = range(1,n+1))#pd.series is used to generate a index for the n natural numbers and its squares
+print(s2)
+
+
+#Upgrad Solution
+n = int(input())
+
+import numpy as np 
+import pandas as pd 
+
+# Create a pandas series having the squares of the first 'n' natural numbers using
+# the range function and specify the index explicitly from 1 to n, again, using the
+# range function
+x = pd.Series(np.array(range(1,n+1))**2, index = range(1,n+1))
+
+# Print the created series
+print(x)

@@ -1,0 +1,8 @@
+Applying Conditions on Dataframes
+Description
+Print all the columns and the rows where 'area' is greater than 0, 'wind' is greater than 1 and the 'temp' is greater than 15.
+
+import pandas as pd
+df = pd.read_csv('https://query.data.world/s/vBDCsoHCytUSLKkLvq851k2b8JOCkF')
+df_2 = df[((df.iloc[:,12]>0) & (df.iloc[:,10]>1) & (df.iloc[:,8]>15))]#Type your code here.
+print(df_2.head(20))

@@ -1,0 +1,593 @@
+Swap two rows
+Description
+Given m and n, swap the mth and nth rows of the 2-D NumPy array given below.
+
+a = [[4 3 1]
+         [5 7 0]
+         [9 9 3]
+         [8 2 4]]
+
+Example:
+Input 1:
+0
+2
+Output 1:
+[[9 9 3] 
+ [5 7 0] 
+ [4 3 1] 
+ [8 2 4]] 
+
+import numpy as np 
+# Given array
+a = np.array([[4, 3, 1], [5, 7, 0], [9, 9, 3], [8, 2, 4]])
+# Read the values of m and n
+import sys
+lines = sys.stdin.readlines()
+m = int(lines[0])
+n = int(lines[1])
+# Write your code for swapping here
+a[[m, n]] = a[[n, m]]
+# Print the array after swapping
+print(a)
+
+---------------------------------------------------------------------------------------------------------
+Checkerboard Matrix
+Description
+Given an even integer ‘n’, create an ‘n*n’ checkerboard matrix with the values 0 and 1, using the tile function.
+Note: Please refer to the 'Creating NumPy Arrays' notebook provided to understand the usage of the tile function in NumPy.
+Format:
+
+Input: A single even integer 'n'.
+
+Output: An 'n*n' NumPy array in checkerboard format.
+
+Example:
+Input 1:
+2
+
+Output 1:
+[[0 1]
+ [1 0]]
+
+Input 2:
+4
+Output 2:
+
+[[0 1 0 1] 
+ [1 0 1 0]
+ [0 1 0 1]
+ [1 0 1 0]]
+
+
+import numpy as np
+# Read the variable from STDIN
+n = int(input())
+checkerboard = np.tile(np.array([[0,1],[1,0]]), (n//2, n//2))
+print (checkerboard)
+
+-------------------------------------------------------------------------------------------------------------------------------
+Stacking arrays
+Description
+Merge the three arrays provided to you to form a one 4x4 array.
+[Hint: Check the function np.transpose() in the 'Manipulating Arrays' notebook provided.]
+Input:
+Array 1: 3*3
+[[7, 13, 14]
+[18, 10, 17]
+[11, 12, 19]]
+Array 2: 1-D array
+[16, 6, 1]
+Array 3: 1*4 array
+[[5, 8, 4, 3]]
+
+Output:
+[[7 13 14 5]
+[18 10 17 8]
+[11 12 19 4]
+[16 6 1 3]]
+
+
+# Read the input
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+list_1 = input_list[0]
+list_2 = input_list[1]
+list_3 = input_list[2]
+#print(input_list[0])
+# Import NumPy
+import numpy as np
+a = np.array([input_list[0]]).reshape(-1)
+#print(a)
+b = np.array([input_list[1]]).reshape(-1)
+#print(b)
+k = np.hstack((a,b)).reshape(4,3)
+c = np.array([list_3])
+c = (c.T).reshape(-1,c.shape[1])
+#print(c)
+#c = (input_list[2].T).reshape(-1,input_list[2].shape[1])
+final_array = np.array([np.hstack((k,c))])
+print(final_array.reshape(4,4))
+-------------------------------------------------------------------------------------------------------------------------------
+
+Sample Bar Graph
+
+import numpy as np
+import matplotlib.pyplot as plt
+products = np.array(['Furniture','Technology','Office Supplies'])
+sales_amount = np.array([4110451.90,4744557.50,3787492.52])
+tick_values = np.arange(0,9000000,1000000)
+tick_labels = ["0L","1L","2L","3L","4L","5L","6L","7L"]
+plt.bar(products,sales_amount,color = 'cyan',edgecolor = 'blue')
+plt.title("Sales across Products",fontdict = {'fontsize': 20,"fontweight" : 10,"color" : 'Green'})
+plt.xlabel("Products",fontdict = {'fontsize': 10,"fontweight" : 5,"color" : 'blue'})
+plt.ylabel("Sales Amount",fontdict = {'fontsize': 10,"fontweight" : 5,"color" : 'blue'})
+plt.yticks(tick_values,tick_labels)
+plt.show()
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Scatter Plot
+
+import matplotlib.pyplot as p
+import numpy as np
+
+sales = np.array ([1013.14, 8298.48, 875.51, 22320.83, 9251.6, 4516.86, 585.16, 836154.03, 216748.48, 174.2, 27557.79, 563.25, 558.11, 37117.45, 357.36, 2206.96, 709.5, 35064.03, 7230.78, 235.33, 148.32, 3973.27, 11737.8, 7104.63, 83.67, 5569.83, 92.34, 107104.36, 1045.62, 9072.51, 42485.82, 5093.82, 14846.16, 943.92, 684.36, 15012.03, 38196.18, 2448.75, 28881.96, 13912.14, 4507.2, 4931.06, 12805.05, 67912.73, 4492.2, 1740.01, 458.04, 16904.32, 21744.53, 10417.26, 18665.33, 2808.42, 54195.57, 67332.5, 24390.95, 1790.43, 2234.19, 9917.5, 7408.14, 36051.99, 1352.22, 1907.7, 245722.14, 2154.66, 1078.21, 3391.65, 28262.73, 5177.04, 66.51, 2031.34, 1683.72, 1970.01, 6515.82, 1055.31, 1029.48, 5303.4, 1850.96, 1159.41, 39989.13, 1183.87, 96365.09, 8356.68, 7010.24, 23119.23, 46109.28, 146071.84, 242259.03, 9058.95, 1313.67, 31525.06, 2019.94, 703.04, 1868.79, 700.5, 55512.02, 243.5, 2113.18, 11781.81, 262189.49, 3487.29, 513.12, 312050.42, 5000.7, 121.02, 1302.78, 169.92, 124.29, 57366.05, 29445.93, 4614.3, 45009.98, 309.24, 3353.67, 41348.34, 2280.27, 61193.7, 1466.79, 12419.94, 445.12, 25188.65, 263514.92, 12351.23, 1152.3, 26298.81, 9900.78, 5355.57, 2325.66, 6282.81, 127707.92, 1283.1, 3560.15, 3723.84, 13715.01, 4887.9, 3396.89, 33348.42, 625.02, 1665.48, 32486.97, 340212.44, 20516.22, 8651.16, 13590.06, 2440.35, 6462.57, 1770.13, 7527.18, 1433.65, 423.3, 21601.72, 10035.72, 2378.49, 3062.38, 719469.32, 179366.79, 345.17, 30345.78, 300.71, 940.81, 36468.08, 1352.85, 1755.72, 2391.96, 19.98, 19792.8, 15633.88, 7.45, 521.67, 1118.24, 7231.68, 12399.32, 204.36, 23.64, 5916.48, 313.98, 108181.5, 9212.42, 27476.91, 1761.33, 289.5, 780.3, 15098.46, 813.27, 47.55, 8323.23, 22634.64, 1831.02, 28808.1, 10539.78, 588.99, 939.78, 7212.41, 15683.01, 41369.09, 5581.6, 403.36, 375.26, 12276.66, 15393.56, 76.65, 5884.38, 18005.49, 3094.71, 43642.78, 35554.83, 22977.11, 1026.33, 665.28, 9712.49, 6038.52, 30756.51, 3758.25, 4769.49, 2463.3, 160153.16, 967.11, 2311.74, 1414.83, 12764.91, 4191.24, 110.76, 637.34, 1195.12, 2271.63, 804.12, 196.17, 167.67, 131.77, 2842.05, 9969.12, 1784.35, 3098.49, 25005.54, 1300.1, 118697.39, 7920.54, 6471.78, 31707.57, 37636.47, 118777.77, 131170.76, 3980.88, 3339.39, 26563.9, 4038.73, 124.8, 196.65, 2797.77, 29832.76, 184.84, 79.08, 8047.83, 205313.25, 1726.98, 899.73, 224.06, 304763.54, 6101.31, 729.6, 896.07, 17.82, 26.22, 46429.78, 31167.27, 2455.94, 37714.3, 1506.93, 3812.78, 25223.34, 3795.96, 437.31, 41278.86, 2091.81, 6296.61, 468.82, 23629.64, 160435.53, 9725.46, 1317.03, 1225.26, 30034.08, 7893.45, 2036.07, 215.52, 3912.42, 82783.43, 253.14, 966.96, 3381.26, 164.07, 1984.23, 75.12, 25168.17, 3295.53, 991.12, 10772.1, 44.16, 1311.45, 35352.57, 245783.54, 20.49, 13471.06, 8171.16, 14075.67, 611.82, 3925.56, 981.84, 10209.84, 156.56, 243.06, 21287.52, 7300.51, 434.52, 6065.0, 741577.51, 132461.03, 224.75, 28953.6, 757.98, 528.15, 34922.41, 50.58, 2918.48, 1044.96, 22195.13, 3951.48, 6977.64, 219.12, 5908.38, 10987.46, 4852.26, 445.5, 71860.82, 14840.45, 24712.08, 1329.9, 1180.44, 85.02, 10341.63, 690.48, 1939.53, 20010.51, 914.31, 25223.82, 12804.66, 2124.24, 602.82, 2961.66, 15740.79, 74138.35, 7759.39, 447.0, 2094.84, 22358.95, 21734.53, 4223.73, 17679.53, 1019.85, 51848.72, 69133.3, 30146.9, 705.48, 14508.88, 7489.38, 20269.44, 246.12, 668.13, 768.93, 215677.35, 899.16, 2578.2, 4107.99, 20334.57, 366.84, 3249.27, 98.88, 3497.88, 3853.05, 786.75, 1573.68, 458.36, 1234.77, 1094.22, 2300.61, 970.14, 3068.25, 35792.85, 4277.82, 71080.28, 3016.86, 3157.49, 15888.0, 30000.36, 140037.89, 216056.25, 1214.22, 1493.94, 32036.69, 4979.66, 106.02, 46257.68, 1033.3, 937.32, 3442.62, 160633.45, 213.15, 338.88, 242117.13, 9602.34, 2280.99, 73759.08, 23526.12, 6272.74, 43416.3, 576.78, 1471.61, 20844.9, 3497.7, 56382.38, 902.58, 6235.26, 48.91, 32684.24, 276611.58, 13370.38, 10595.28, 4555.14, 10084.38, 267.72, 1012.95, 4630.5, 149433.51, 364.32, 349.2, 4647.56, 504.0, 10343.52, 5202.66, 2786.26, 34135.95, 2654.58, 24699.51, 339239.87, 136.26, 23524.51, 8731.68, 8425.86, 835.95, 11285.19])
+profit = np.array([-1213.46, 1814.13, -1485.7, -2286.73, -2872.12, 946.8, 198.48, 145454.95, 49476.1, -245.56, 5980.77, -790.47, -895.72, -34572.08, 117.9, 561.96, 152.85, 1426.05, 1873.17, -251.03, 68.22, 635.11, 3722.4, -3168.63, 27.6, 952.11, 7.38, 20931.13, 186.36, -5395.38, 9738.45, 525.27, 3351.99, 120.78, 266.88, 3795.21, 8615.97, 609.54, 7710.57, 2930.43, 1047.96, -2733.32, 2873.73, -5957.89, -909.6, 163.41, -376.02, -6322.68, -10425.86, 2340.36, -28430.53, 756.12, 12633.33, 7382.54, -14327.69, 436.44, 683.85, -694.91, 1960.56, 10925.82, 334.08, 425.49, 53580.2, 1024.56, 110.93, 632.22, 8492.58, 1418.88, 19.26, -2567.57, 346.26, 601.86, 1318.68, 304.05, 428.37, 1416.24, -2878.18, 283.41, 12611.04, 261.95, -648.43, 1112.88, -2640.29, 6154.32, 11558.79, 15291.4, 56092.65, 1515.39, 342.03, -10865.66, -902.8, 351.52, 364.17, 87.72, 11565.66, 75.4, 289.33, 3129.63, 50795.72, 783.72, 215.46, 29196.89, 1147.26, 53.22, 286.56, 73.02, 42.24, 13914.85, 5754.54, 998.04, -1476.04, 86.58, -1636.35, 10511.91, 647.34, 13768.62, 338.67, 3095.67, 173.84, 5632.93, 64845.11, 3297.33, 338.61, 7246.62, 2255.52, 1326.36, 827.64, 1100.58, 9051.36, 412.23, 1063.91, 940.59, 3891.84, 1599.51, 1129.57, 8792.64, 6.24, 592.77, 8792.85, 47727.5, -4597.68, 2242.56, 3546.45, 321.87, 1536.72, -2463.29, 1906.08, -1916.99, 186.24, 3002.05, -3250.98, 554.7, 830.64, 122612.79, 33894.21, -559.03, 7528.05, -477.67, -1660.25, -33550.96, 481.68, 425.08, 450.3, 9.57, -3025.29, 2924.62, -11.84, 87.36, 26.51, 1727.19, -6131.18, 59.16, 3.06, 1693.47, 74.67, 24729.21, -4867.94, 6705.18, 410.79, 70.74, 101.7, 3264.3, 137.01, 6.18, 2100.21, 5295.24, 520.29, 7205.52, 2602.65, 116.67, 224.91, -5153.93, 3882.69, -6535.24, -1254.1, 84.56, -186.38, -3167.2, -7935.59, 37.02, 1908.06, -27087.84, 829.32, 8727.44, 2011.47, -11629.64, 234.96, 53.1, 1248.14, 1511.07, 7374.24, 1193.28, 1090.23, 553.86, 38483.86, 255.81, 528.54, 326.07, 3924.36, 1018.92, 36.48, 113.24, -1770.05, 527.64, 224.49, 79.53, 64.77, 38.08, 868.08, 2265.06, -2643.62, 833.73, 5100.03, 326.44, 18158.84, 1682.01, -3290.22, 8283.33, 7926.18, 1694.41, 30522.92, 1214.07, 900.6, -6860.8, -865.91, 26.16, 47.22, 863.52, 7061.26, 73.92, 33.12, 1801.23, 38815.44, 431.13, 216.81, 16.5, 53688.2, 1210.32, 236.94, 210.84, 3.18, 2.22, 10265.64, 7212.3, 343.56, 3898.28, 568.11, -1867.85, 5782.38, 697.29, -192.06, 10179.02, 616.32, 1090.47, 165.84, 6138.28, 39723.06, 2085.14, 90.0, 129.93, 7957.53, 2131.86, 562.44, 99.12, 1298.37, 7580.33, 113.73, 139.71, 456.0, 21.24, 292.68, 30.34, 5817.15, 1060.89, 252.9, 3060.61, 6.6, 219.09, 8735.82, 31481.09, 2.85, -3124.72, 2195.94, 3464.7, 141.12, 1125.69, -1752.03, 3281.52, -303.77, 114.18, -2412.63, -5099.61, 146.64, 660.22, 18329.28, 28529.84, -232.27, 7435.41, -1157.94, -746.73, -30324.2, 2.52, 1313.44, 213.72, -5708.95, 930.18, 1663.02, 31.59, 1787.88, -8219.56, 973.92, 4.32, 8729.78, -2529.52, 5361.06, 69.21, 519.3, 13.56, 2236.77, 213.96, 367.98, 5074.2, 206.61, 7620.36, 2093.19, 164.07, 230.01, -815.82, 4226.7, -3635.09, -3344.17, 167.26, 143.79, -8233.57, -4085.21, 919.35, -25232.35, 234.33, 12040.68, 7206.28, -15112.76, 206.04, -2662.49, 2346.81, 4461.36, 93.48, 82.11, 147.87, 10389.53, 395.58, 474.74, 1333.26, 3913.02, 117.36, 858.78, 6.9, -4628.49, 1170.6, 218.55, 539.58, -211.0, 438.87, 317.16, 310.8, -1578.09, 706.56, 6617.4, 803.84, 2475.26, 764.34, -1461.88, 3805.56, 7371.27, -1377.13, 42435.03, 472.47, 315.48, -11755.91, -2418.6, 6.36, 9317.76, 326.88, -287.31, 637.68, 17579.17, 70.83, 47.4, 26143.92, 1548.15, 612.78, 17842.76, 6735.39, 1206.5, -10035.74, 149.4, -777.85, 5566.29, 748.92, 14941.58, 348.93, 1944.06, -5.51, 7026.84, 46114.92, 2361.86, 2613.24, 1277.37, 2587.74, 103.08, 311.43, 1250.58, 13055.21, 18.21, 108.24, 709.44, 115.92, 1863.6, 1873.86, 817.32, 7577.64, 1019.19, 6813.03, 24698.84, 66.24, -10971.39, 2056.47, 2095.35, 246.33, 2797.89])
+# corresponding category and country value to the above arrays
+product_category = np.array(['Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Technology', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Office Supplies', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture', 'Furniture'])
+country = np.array(['Zimbabwe', 'Zambia', 'Yemen', 'Vietnam', 'Venezuela', 'Uzbekistan', 'Uruguay', 'United States', 'United Kingdom', 'United Arab Emirates', 'Ukraine', 'Uganda', 'Turkmenistan', 'Turkey', 'Tunisia', 'Trinidad and Tobago', 'Togo', 'Thailand', 'Tanzania', 'Tajikistan', 'Taiwan', 'Syria', 'Switzerland', 'Sweden', 'Swaziland', 'Sudan', 'Sri Lanka', 'Spain', 'South Sudan', 'South Korea', 'South Africa', 'Somalia', 'Singapore', 'Sierra Leone', 'Serbia', 'Senegal', 'Saudi Arabia', 'Rwanda', 'Russia', 'Romania', 'Qatar', 'Portugal', 'Poland', 'Philippines', 'Peru', 'Paraguay', 'Papua New Guinea', 'Panama', 'Pakistan', 'Norway', 'Nigeria', 'Niger', 'Nicaragua', 'New Zealand', 'Netherlands', 'Nepal', 'Namibia', 'Myanmar (Burma)', 'Mozambique', 'Morocco', 'Mongolia', 'Moldova', 'Mexico', 'Mauritania', 'Martinique', 'Mali', 'Malaysia', 'Madagascar', 'Luxembourg', 'Lithuania', 'Libya', 'Liberia', 'Lesotho', 'Lebanon', 'Kyrgyzstan', 'Kenya', 'Kazakhstan', 'Jordan', 'Japan', 'Jamaica', 'Italy', 'Israel', 'Ireland', 'Iraq', 'Iran', 'Indonesia', 'India', 'Hungary', 'Hong Kong', 'Honduras', 'Haiti', 'Guyana', 'Guinea-Bissau', 'Guinea', 'Guatemala', 'Guadeloupe', 'Greece', 'Ghana', 'Germany', 'Georgia', 'Gabon', 'France', 'Finland', 'Ethiopia', 'Estonia', 'Eritrea', 'Equatorial Guinea', 'El Salvador', 'Egypt', 'Ecuador', 'Dominican Republic', 'Djibouti', 'Denmark', 'Democratic Republic of the Congo', 'Czech Republic', 'Cuba', 'Croatia', "Cote d'Ivoire", 'Costa Rica', 'Colombia', 'China', 'Chile', 'Central African Republic', 'Canada', 'Cameroon', 'Cambodia', 'Burkina Faso', 'Bulgaria', 'Brazil', 'Bosnia and Herzegovina', 'Bolivia', 'Benin', 'Belgium', 'Belarus', 'Barbados', 'Bangladesh', 'Bahrain', 'Azerbaijan', 'Austria', 'Australia', 'Argentina', 'Angola', 'Algeria', 'Albania', 'Afghanistan', 'Zimbabwe', 'Zambia', 'Yemen', 'Western Sahara', 'Vietnam', 'Venezuela', 'Uzbekistan', 'Uruguay', 'United States', 'United Kingdom', 'United Arab Emirates', 'Ukraine', 'Uganda', 'Turkmenistan', 'Turkey', 'Tunisia', 'Trinidad and Tobago', 'Togo', 'The Gambia', 'Thailand', 'Tanzania', 'Tajikistan', 'Taiwan', 'Syria', 'Switzerland', 'Sweden', 'Swaziland', 'Suriname', 'Sudan', 'Sri Lanka', 'Spain', 'South Korea', 'South Africa', 'Somalia', 'Slovenia', 'Slovakia', 'Singapore', 'Sierra Leone', 'Serbia', 'Senegal', 'Saudi Arabia', 'Rwanda', 'Russia', 'Romania', 'Republic of the Congo', 'Qatar', 'Portugal', 'Poland', 'Philippines', 'Peru', 'Paraguay', 'Papua New Guinea', 'Panama', 'Pakistan', 'Oman', 'Norway', 'Nigeria', 'Niger', 'Nicaragua', 'New Zealand', 'Netherlands', 'Nepal', 'Namibia', 'Myanmar (Burma)', 'Mozambique', 'Morocco', 'Montenegro', 'Mongolia', 'Moldova', 'Mexico', 'Mauritania', 'Martinique', 'Mali', 'Malaysia', 'Madagascar', 'Macedonia', 'Luxembourg', 'Lithuania', 'Libya', 'Liberia', 'Lesotho', 'Lebanon', 'Laos', 'Kyrgyzstan', 'Kenya', 'Kazakhstan', 'Jordan', 'Japan', 'Jamaica', 'Italy', 'Israel', 'Ireland', 'Iraq', 'Iran', 'Indonesia', 'India', 'Hungary', 'Hong Kong', 'Honduras', 'Haiti', 'Guyana', 'Guinea-Bissau', 'Guinea', 'Guatemala', 'Guadeloupe', 'Greece', 'Ghana', 'Germany', 'Georgia', 'Gabon', 'French Guiana', 'France', 'Finland', 'Ethiopia', 'Estonia', 'Eritrea', 'Equatorial Guinea', 'El Salvador', 'Egypt', 'Ecuador', 'Dominican Republic', 'Djibouti', 'Denmark', 'Democratic Republic of the Congo', 'Czech Republic', 'Cyprus', 'Cuba', 'Croatia', "Cote d'Ivoire", 'Costa Rica', 'Colombia', 'China', 'Chile', 'Chad', 'Central African Republic', 'Canada', 'Cameroon', 'Cambodia', 'Burkina Faso', 'Bulgaria', 'Brazil', 'Botswana', 'Bosnia and Herzegovina', 'Bolivia', 'Bhutan', 'Benin', 'Belize', 'Belgium', 'Belarus', 'Barbados', 'Bangladesh', 'Bahrain', 'Azerbaijan', 'Austria', 'Australia', 'Armenia', 'Argentina', 'Angola', 'Algeria', 'Albania', 'Afghanistan', 'Zimbabwe', 'Zambia', 'Yemen', 'Western Sahara', 'Vietnam', 'Venezuela', 'Uzbekistan', 'Uruguay', 'United States', 'United Kingdom', 'United Arab Emirates', 'Ukraine', 'Uganda', 'Turkmenistan', 'Turkey', 'Tunisia', 'Trinidad and Tobago', 'Togo', 'Thailand', 'Tanzania', 'Taiwan', 'Syria', 'Switzerland', 'Sweden', 'Sudan', 'Sri Lanka', 'Spain', 'South Korea', 'South Africa', 'Somalia', 'Slovenia', 'Slovakia', 'Singapore', 'Sierra Leone', 'Senegal', 'Saudi Arabia', 'Rwanda', 'Russia', 'Romania', 'Republic of the Congo', 'Qatar', 'Portugal', 'Poland', 'Philippines', 'Peru', 'Paraguay', 'Papua New Guinea', 'Panama', 'Pakistan', 'Norway', 'Nigeria', 'Niger', 'Nicaragua', 'New Zealand', 'Netherlands', 'Nepal', 'Myanmar (Burma)', 'Mozambique', 'Morocco', 'Montenegro', 'Mongolia', 'Moldova', 'Mexico', 'Mauritania', 'Martinique', 'Mali', 'Malaysia', 'Malawi', 'Madagascar', 'Macedonia', 'Lithuania', 'Libya', 'Liberia', 'Lebanon', 'Laos', 'Kyrgyzstan', 'Kuwait', 'Kenya', 'Kazakhstan', 'Jordan', 'Japan', 'Jamaica', 'Italy', 'Israel', 'Ireland', 'Iraq', 'Iran', 'Indonesia', 'India', 'Hungary', 'Hong Kong', 'Honduras', 'Haiti', 'Guyana', 'Guatemala', 'Guadeloupe', 'Greece', 'Ghana', 'Germany', 'Georgia', 'Gabon', 'France', 'Finland', 'Estonia', 'El Salvador', 'Egypt', 'Ecuador', 'Dominican Republic', 'Djibouti', 'Denmark', 'Democratic Republic of the Congo', 'Czech Republic', 'Cuba', 'Croatia', "Cote d'Ivoire", 'Costa Rica', 'Colombia', 'China', 'Chile', 'Canada', 'Cameroon', 'Cambodia', 'Burundi', 'Burkina Faso', 'Bulgaria', 'Brazil', 'Botswana', 'Bosnia and Herzegovina', 'Bolivia', 'Benin', 'Belgium', 'Belarus', 'Barbados', 'Bangladesh', 'Azerbaijan', 'Austria', 'Australia', 'Armenia', 'Argentina', 'Angola', 'Algeria', 'Albania', 'Afghanistan'])
+
+product_categories = np.array(["Technology", "Furniture", "Office Supplies"])
+colors = np.array(["cyan", "green", "yellow"])
+for color,category in zip(colors,product_categories):
+    sales_category= sales[product_category == category]
+    profit_category= profit[product_category == category]
+    #print([product_category == category])
+    p.scatter(profit_category,sales_category,c = color, label = category)
+
+    for pt in zip(profit[country == 'India'],sales[country== 'India']):
+        p.annotate(s="India", xy = pt) #Label the points as s = 'India' and specify the point of anotation using xy = pt
+    
+    
+p.title("Sales across profits in different countries in different technolgy",fontdict = {'fontsize': 20,"fontweight" : 10,"color" : 'Green'})
+p.xlabel("Profit",fontdict = {'fontsize': 10,"fontweight" : 5,"color" : 'blue'})
+p.ylabel("Sales",fontdict = {'fontsize': 10,"fontweight" : 5,"color" : 'blue'})    
+p.legend()
+p.show()
+
+----------------------------------------------------------------------------------------------------------------------------------
+Line Graph
+
+# importing the required libraries
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sales data across months
+months = np.array(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
+sales = np.array([241268.56, 184837.36, 263100.77, 242771.86, 288401.05, 401814.06, 258705.68, 456619.94, 481157.24, 422766.63, 555279.03, 503143.69])
+
+#plt.plot(months,sales)
+#y = np.random.randint(1,100, 50)
+plt.plot(months,sales, 'b', marker = 'x') 
+plt.title("Sales data across months")
+plt.xlabel("Months")
+plt.ylabel("Sales")
+plt.xticks(rotation = 90) # makes the x-axis label to appear clearly
+plt.show()
+
+----------------------------------------------------------------------------------------------------------------------------------
+Histogram
+
+import numpy as np
+import matplotlib.pyplot as p
+age = np.array([23, 22, 24, 24, 23, 23, 22, 23, 24, 24, 24, 22, 24, 23, 24, 23, 22, 24, 23, 23, 22, 23, 23, 24, 23, 24, 23, 22, 24, 22, 23, 24, 23, 24, 22, 22, 24, 23, 22, 24, 24, 24, 23, 24, 24, 22, 23, 23, 24, 22, 22, 24, 22, 23, 22, 23, 22, 23, 23, 23, 23, 22, 22, 23, 23, 23, 23, 23, 23, 22, 29, 29, 27, 28, 28, 29, 28, 27, 26, 27, 28, 29, 26, 28, 26, 28, 27, 27, 28, 28, 26, 29, 28, 28, 26, 27, 26, 28, 27, 29, 29, 27, 27, 27, 28, 29, 29, 29, 27, 28, 28, 26, 28, 27, 26, 26, 27, 26, 29, 28, 28, 28, 29, 26, 26, 26, 29, 26, 28, 26, 28, 28, 27, 27, 27, 29, 27, 28, 27, 26, 29, 29, 27, 29, 26, 29, 26, 29, 29, 27, 28, 28, 27, 29, 26, 28, 26, 28, 27, 29, 29, 29, 27, 27, 29, 29, 26, 26, 26, 27, 28, 27, 28, 28, 29, 27, 26, 27, 29, 28, 29, 27, 27, 26, 26, 26, 26, 29, 28, 28, 33, 34, 33, 33, 34, 33, 31, 32, 33, 33, 32, 34, 32, 31, 33, 34, 31, 33, 34, 33, 34, 33, 32, 33, 31, 33, 32, 32, 31, 34, 33, 31, 34, 32, 32, 31, 32, 31, 32, 34, 33, 33, 31, 32, 32, 31, 32, 33, 34, 32, 34, 31, 32, 31, 33, 32, 34, 31, 32, 34, 31, 31, 34, 34, 34, 32, 34, 33, 33, 32, 32, 33, 31, 33, 31, 32, 34, 32, 32, 31, 34, 32, 32, 31, 32, 34, 32, 33, 31, 34, 31, 31, 32, 31, 33, 34, 34, 34, 31, 33, 34, 33, 34, 31, 34, 34, 33, 31, 32, 33, 31, 31, 33, 32, 34, 32, 34, 31, 31, 34, 32, 32, 31, 31, 32, 31, 31, 32, 33, 32, 31, 32, 32, 31, 31, 34, 31, 34, 33, 32, 31, 34, 34, 31, 34, 31, 32, 34, 33, 33, 34, 32, 33, 31, 31, 33, 32, 31, 31, 31, 37, 38, 37, 37, 36, 37, 36, 39, 37, 39, 37, 39, 38, 36, 37, 36, 38, 38, 36, 39, 39, 37, 39, 36, 37, 36, 36, 37, 38, 36, 38, 39, 39, 36, 38, 37, 39, 38, 39, 39, 36, 38, 37, 38, 39, 36, 37, 36, 36, 38, 38, 38, 39, 36, 37, 37, 39, 37, 37, 36, 36, 39, 37, 36, 36, 36, 39, 37, 37, 37, 37, 39, 36, 39, 37, 38, 37, 36, 36, 39, 39, 36, 36, 39, 39, 39, 37, 38, 36, 36, 37, 38, 37, 38, 37, 39, 39, 37, 39, 36, 36, 39, 39, 39, 36, 38, 39, 39, 39, 39, 38, 36, 37, 37, 38, 38, 39, 36, 37, 37, 39, 36, 37, 37, 36, 36, 36, 38, 39, 38, 36, 38, 36, 39, 38, 36, 36, 37, 39, 39, 37, 37, 37, 36, 37, 36, 36, 38, 38, 39, 36, 39, 36, 37, 37, 39, 39, 36, 38, 39, 39, 39, 37, 37, 37, 37, 39, 36, 37, 39, 38, 39, 36, 37, 38, 39, 38, 36, 37, 38, 42, 43, 44, 43, 41, 42, 41, 41, 42, 41, 43, 44, 43, 44, 44, 42, 43, 44, 43, 41, 44, 42, 43, 42, 42, 44, 43, 42, 41, 42, 41, 41, 41, 44, 44, 44, 41, 43, 42, 42, 43, 43, 44, 44, 44, 44, 44, 41, 42, 44, 43, 42, 42, 43, 44, 44, 44, 44, 41, 42, 43, 43, 43, 41, 43, 41, 42, 41, 42, 42, 41, 42, 44, 41, 43, 42, 41, 43, 41, 44, 44, 43, 43, 43, 41, 41, 41, 42, 43, 42, 48, 48, 48, 49, 47, 45, 46, 49, 46, 49, 49, 46, 47, 45, 47, 45, 47, 49, 47, 46, 46, 47, 45, 49, 49, 49, 45, 46, 47, 46, 45, 46, 45, 48, 48, 45, 49, 46, 48, 49, 47, 48, 45, 48, 46, 45, 48, 45, 46, 46, 48, 47, 46, 45, 48, 46, 49, 47, 46, 49, 48, 46, 47, 47, 46, 48, 47, 46, 46, 49, 50, 54, 53, 55, 51, 50, 51, 54, 54, 53, 53, 51, 51, 50, 54, 51, 51, 55, 50, 51, 50, 50, 53, 52, 54, 53, 55, 52, 52, 50, 52, 55, 54, 50, 50, 55, 52, 54, 52, 54])
+p.hist(age,color = 'green',edgecolor = 'blue')
+p.show()
+
+----------------------------------------------------------------------------------------------------------------------------------
+IQR Calculation
+
+list_1 = [48.49, 67.54, 57.47, 68.17, 51.18, 68.31, 50.33, 66.7, 45.62, 43.59, 53.64, 70.08, 47.69, 61.27, 44.14, 51.62, 48.72, 65.11]
+a = np.array([list_1])
+b = (np.sort(a))
+print(b)
+
+# First quartile (Q1) 
+Q1 = np.percentile(b, 25, interpolation = 'midpoint') 
+  
+# Third quartile (Q3) 
+Q3 = np.percentile(b, 75, interpolation = 'midpoint') 
+print(Q1)
+print(Q3)
+# Interquaritle range (IQR) 
+IQR = Q3 - Q1 
+print(IQR)
+
+----------------------------------------------------------------------------------------------------------------------------------
+Loading a csv in Pandas
+Description
+Create a dataframe from the file ‘marks.csv’ and print the contents of the dataframe. Open the file from the link above and inspect the required elements in the file (header, separator, etc.). If the top row is a regular entry, do not load it as the column header.
+
+import numpy as np
+import pandas as pd
+df = pd.read_csv('https://media-doselect.s3.amazonaws.com/generic/A08MajL8qN4rq72EpVJbAP1Rw/marks_1.csv', sep = '|'
+                 , header = None)
+print(df)
+
+----------------------------------------------------------------------------------------------------------------------------------
+From a given array, extract all the elements which are greater than 'm' and less than 'n'. Note: 'm' and 'n' are integer values provided as input.    Input format:  A list of integers on line one  Integer 'm' on line two  Integer 'n' on line three    Output format:  1-D array containing integers greater than 'm' and smaller than 'n'.
+
+import numpy as np
+array_1 = np.array([input_list])
+final_array1 = array_1[np.where((array_1 > m) & (array_1 < n), True, False)]# Fetch the elements from the array which is less than m and greater than n using where and '&' operator
+print(final_array1)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+import pandas as pd
+a = pd.read_csv("E:/IIIT_B/Python/cars.csv", header = None,index_col = [0,1])
+a.columns = ["Country","Cars per captia","Drives Left"]
+a.index.names = ["Region_code","Country_code"]
+a
+----------------------------------------------------------------------------------------------------------------------------------
+
+Manual Indexing
+Description
+Create a panda series that contains the first ‘n’ natural numbers and their respective squares. The first ‘n’ numbers should appear in the index position.
+Hint: Use manual indexing.
+ 
+Format:
+Input: A natural number 'n'
+Output: A pandas series with the first 'n' natural numbers in the index position and their respective squares in the adjacent column.
+
+Example:
+Input 1:
+4
+Output 1:
+1  1 
+2  4 
+3  9 
+4  16 
+dtype: int64
+
+n = int(input())
+import numpy as np 
+import pandas as pd 
+arrays = np.array([np.arange(start=1, stop=n+1)]) # generating array of n natural numbers starting from 1
+oned = arrays.reshape(-1) # Reshaping it to 1 dimensional array as we need to handle it in pd.series
+b = oned ** 2 # calculating squares for each number in the array
+s2 = pd.Series(b,index = range(1,n+1))#pd.series is used to generate a index for the n natural numbers and its squares
+print(s2)
+
+
+#Upgrad Solution
+n = int(input())
+
+import numpy as np 
+import pandas as pd 
+
+# Create a pandas series having the squares of the first 'n' natural numbers using
+# the range function and specify the index explicitly from 1 to n, again, using the
+# range function
+x = pd.Series(np.array(range(1,n+1))**2, index = range(1,n+1))
+
+# Print the created series
+print(x)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Description
+Using the file ‘marks.csv’, create a dataframe as shown below.
+You must be able make the first column of the file as the index and name it 'S.No.'. Also, the columns must be renamed as shown in the image.
+
+import numpy as np
+import pandas as pd
+df = pd.read_csv('E:/IIIT_B/Python/marks_1.csv',sep = '|', header = None,index_col = 0)
+df.index.name = "S.No."
+df.columns = ["Name","Subject","Maximum Marks","Marks Obtained","Percentage"]
+print(df)
+
+----------------------------------------------------------------------------------------------------------------------------
+Indexing Dataframes
+Description
+Print only the even numbers of rows of the dataframe 'df'.
+
+Note: Don't include the row indexed zero.
+import pandas as pd
+df = pd.read_csv('https://query.data.world/s/vBDCsoHCytUSLKkLvq851k2b8JOCkF')
+df_2 =pd.DataFrame(df[2::2])
+print(df_2.head(20))
+
+--------------------------------------------------------------------------------------------------------------------------------
+Applying Conditions on Dataframes
+Description
+Print all the columns and the rows where 'area' is greater than 0, 'wind' is greater than 1 and the 'temp' is greater than 15.
+
+import pandas as pd
+df = pd.read_csv('https://query.data.world/s/vBDCsoHCytUSLKkLvq851k2b8JOCkF')
+df_2 = df[(df["area"]>0) & (df["wind"]>1) & (df["temp"]>15)] #Type your code here.
+print(df_2.head(20))
+
+
+
+import pandas as pd
+df = pd.read_csv('https://query.data.world/s/vBDCsoHCytUSLKkLvq851k2b8JOCkF')
+df_2 = df[((df.iloc[:,12]>0) & (df.iloc[:,10]>1) & (df.iloc[:,8]>15))] #Type your code here.
+%timeit print(df_2)
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Dataframe
+ In the dataframe created above, find the department that has the most efficient team (the team with minimum percentage of employees who need training).
+ 
+import numpy as np
+import pandas as pd
+
+# The file is stored at the following path:
+# 'https://media-doselect.s3.amazonaws.com/generic/NMgEjwkAEGGQZBoNYGr9Ld7w0/rating.csv'
+df = pd.read_csv('https://media-doselect.s3.amazonaws.com/generic/NMgEjwkAEGGQZBoNYGr9Ld7w0/rating.csv')
+
+df["Training"] = df.Rating.apply(lambda x : "Yes" if x < 3.5 else "No")
+df1 = df[(df['Training'] == 'Yes')] #Dataframe contains only for the employees who needs training
+count_employee = df.groupby(['Department'])['ID'].count() # total number of emloyees in each department
+# Provide your answer below
+df2 = df1.groupby(['Department'])['Training'].count()/count_employee
+df2
+
+---------------------------------------------------------------------------------------------------------------------------------
+Hierarchical Indexing
+Description
+You are provided with the dataset of a company which has offices across three cities - Mumbai, Bangalore and New Delhi. The dataset contains the rating (out of 5) of all the employees from different departments (Finance, HR, Marketing and Sales). 
+Create a hierarchical index based on two columns: Office and Department
+
+Print the first 5 rows as the output. Refer to the image below for your reference.
+
+import numpy as np
+import pandas as pd
+# The file is stored at the following path:
+# 'https://media-doselect.s3.amazonaws.com/generic/NMgEjwkAEGGQZBoNYGr9Ld7w0/rating.csv'
+df = pd.read_csv('https://media-doselect.s3.amazonaws.com/generic/NMgEjwkAEGGQZBoNYGr9Ld7w0/rating.csv')
+# Provide your answer below
+df.set_index(["Office","Department"],inplace = True)
+print(df.head(5))
+
+---------------------------------------------------------------------------------------------------------------------------------
+Dataframe grouping
+Description
+Group the dataframe 'df' by 'month' and 'day' and find the mean value for column 'rain' and 'wind'.
+
+import pandas as pd
+df = pd.read_csv('https://query.data.world/s/vBDCsoHCytUSLKkLvq851k2b8JOCkF')
+df.set_index(["month","day"],inplace = True)
+#Type your groupby command here
+grouper = df.groupby(["month","day"],as_index=True)
+df_1 = grouper['wind','rain'].mean()
+print(df_1.head(20))
+
+----------------------------------------------------------------------------------------------------------------------------------
+Dataframe Pivot Table
+Description
+Group the data 'df' by 'month' and 'day' and find the mean value for column 'rain' and 'wind' using the pivot table command.
+
+import numpy as np
+import pandas as pd
+df = pd.read_csv('https://query.data.world/s/vBDCsoHCytUSLKkLvq851k2b8JOCkF')
+df_1 = pd.pivot_table(data=df, index=['month', 'day'], values=['rain', 'wind'], aggfunc={'rain': 'mean', 'wind': 'mean'})
+print(df_1.head(20))
+
+---------------------------------------------------------------------------------------------------------------------------------
+Operations on multiple dataframes
+Description
+Given three data frames containing the number of gold, silver, and bronze Olympic medals won by some countries, determine the total number of medals won by each country. 
+Note: All the three data frames don’t have all the same countries. So, ensure you use the ‘fill_value’ argument (set it to zero), to avoid getting NaN values. Also, ensure you sort the final dataframe, according to the total medal count in descending order.
+
+Method 1 :
+
+import numpy as np 
+import pandas as pd
+
+# Defining the three dataframes indicating the gold, silver, and bronze medal counts
+# of different countries
+gold = pd.DataFrame({'Country': ['USA', 'France', 'Russia'],
+                         'Medals': [15, 13, 9]}
+                    )
+silver = pd.DataFrame({'Country': ['USA', 'Germany', 'Russia'],
+                        'Medals': [29, 20, 16]}
+                    )
+bronze = pd.DataFrame({'Country': ['France', 'USA', 'UK'],
+                        'Medals': [40, 28, 27]}
+                    )
+df3 = pd.concat([gold, silver], axis=0).groupby('Country').sum().reset_index()
+df4 =  pd.concat([df3,bronze],axis=0).groupby('Country').sum().reset_index()
+df4 = df4.sort_values('Medals', ascending = False)
+df4.set_index(['Country'],inplace = True)
+df4['Medals'] = df4['Medals'].astype(float)
+print(df4)
+
+Method 2:
+
+import numpy as np 
+import pandas as pd
+
+# Defining the three dataframes indicating the gold, silver, and bronze medal counts
+# of different countries
+gold = pd.DataFrame({'Country': ['USA', 'France', 'Russia'],
+                         'Medals': [15, 13, 9]}
+                    )
+silver = pd.DataFrame({'Country': ['USA', 'Germany', 'Russia'],
+                        'Medals': [29, 20, 16]}
+                    )
+bronze = pd.DataFrame({'Country': ['France', 'USA', 'UK'],
+                        'Medals': [40, 28, 27]}
+                    )
+gold.set_index(['Country'],inplace = True)
+
+silver.set_index(['Country'],inplace = True)
+
+bronze.set_index(['Country'],inplace = True)
+
+df3 = gold.add(silver, fill_value= 0)
+df3 = df3.add(bronze, fill_value= 0)
+df3 = df3.sort_values('Medals', ascending = False)
+
+print(df3)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+# ipl18 contains the data for 2018
+ipl18 = pd.DataFrame({'Team': ['SRH', 'CSK', 'KKR', 'RR', 'MI', 'RCB', 'KXIP', 'DD'],
+                         'Matches': [14, 14, 14, 14, 14, 14, 14, 14],
+                         'Won': [9, 9, 8, 7, 6, 6, 6, 5],
+                         'Lost': [5, 5, 6, 7, 8, 8, 8, 9],
+                         'Tied': [0, 0, 0, 0, 0, 0, 0, 0],
+                         'N/R': [0, 0, 0, 0, 0, 0, 0, 0],
+                         'NRR': [0.284, 0.253, -0.070, -0.250, 0.317, 0.129, -0.502, -0.222],
+                         'For': [2230, 2488, 2363, 2130, 2380, 2322, 2210, 2297],
+                         'Against': [2193, 2433, 2425, 2141, 2282, 2383, 2259, 2304]},
+                         index = range(1,9)
+                    )
+					
+# ipl17 contains the data for 2017
+ipl17 = pd.DataFrame({'Team': ['MI', 'RPS', 'SRH', 'KKR', 'KXIP', 'DD', 'GL', 'RCB'],
+                         'Matches': [14, 14, 14, 14, 14, 14, 14, 14],
+                         'Won': [10, 9, 8, 8, 7, 6, 4, 3],
+                         'Lost': [4, 5, 5, 6, 7, 8, 10, 10],
+                         'Tied': [0, 0, 0, 0, 0, 0, 0, 0],
+                         'N/R': [0, 0, 1, 0, 0, 0, 0, 1],
+                         'NRR': [0.784, 0.176, 0.469, 0.641, 0.123, -0.512, -0.412, -1.299],
+                         'For': [2407, 2180, 2221, 2329, 2207, 2219, 2406, 1845],
+                         'Against': [2242, 2165, 2118, 2300, 2229, 2255, 2472, 2033]},
+                         index = range(1,9)
+                    )
+
+
+Which of the following commands can you use to extract the first 4 teams in the dataset ‘ipl18’ with just the ‘Team’ and ‘Points’ column?
+
+
+ipl17['Points'] = ipl17['Won']*2+ ipl17['Tied'] + ipl17['N/R']
+ipl17
+
+ipl18['Points'] = ipl17['Won']*2+ ipl17['Tied'] + ipl17['N/R']
+ipl18
+
+ipl18.loc [1:4, [‘Team’, ‘Points’]]
+
+
+--------------------------------------------------------------
+Suppose in ‘ipl18’, you want to filter out the teams that have an NRR greater than zero, and for which the ‘For’ score exceeds the ‘Against’ score, i.e. both the conditions should be satisfied. Which teams will be left after you perform the above filtration? (Run the commands on the Python Notebook provided, rather than performing a manual calculation)
+
+ipl18[(ipl18['NRR'] >0) & (ipl18['For'] > ipl18['Against'])]
+
+-----------------------------------------------------------------
+
+If all the stats are taken for both ‘ipl17’ and ‘ipl18’, which team with its total points greater than 25 will have the highest win percentage?
+
+ipl17.set_index(['Team'],inplace = True)
+
+ipl18.set_index(['Team'],inplace = True)
+
+final = ipl17.add(ipl18, fill_value= 0)
+
+
+final = final[(final['Points'] >25)]
+
+final['Win_team'] = (final['Won']/final['Matches'])*100
+final
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+movies.isnull().any().sum()
+
+percent_missing = (movies.isnull().sum() * 100 / len(movies))
+print(percent_missing)
+
+
+movies['language'].fillna('English', inplace=True)
+movies[['language']].eq('English').sum()
+movies
+
+
+movies['Budget_million'] = movies['budget']/(10**6)
+movies['Gross_million'] = movies['gross']/(10**6)
+movies
+
+
+movies['Profit'] = movies['Gross_million'] - movies['Budget_million']
+movies
+
+movies.sort_values('Profit', ascending = False)
+
+
+top10 = movies.head(20)
+top10
+
+---------------------------------------------------------------------------------------------------------------------------
+How many rows and columns are present in the dataframe? 
+
+movies.describe()
+
+How many columns have null values present in them? Try writing code for this instead of counting them manually.
+
+movies.isnull().any().sum()
+
+What is the count of columns in the new dataframe?
+
+len(movies.columns)
+
+Which column has the highest percentage of null values?
+percent_missing = (movies.isnull().sum() * 100 / len(movies))
+print(percent_missing)
+
+What is the count of movies made in the English language after replacing the NaN values with English?
+
+movies['language'].fillna('English', inplace=True)
+movies[['language']].eq('English').sum()
+movies
+
+Which movie is ranked 5th from the top in the list obtained?
+
+movies['Budget_million'] = movies['budget']/(10**6)
+movies['Gross_million'] = movies['gross']/(10**6)
+movies['Profit'] = movies['Gross_million'] - movies['Budget_million']
+movies
+
+
+Suppose movies are divided into 5 buckets based on the IMDb ratings:
+
+IMDb_Top_250[(movies['num_voted_users']) > 25000]
+IMDb_Top_250
+IMDb_Top_250 = movies[movies['num_voted_users'] > 25000]
+IMDb_Top_250 = IMDb_Top_250.sort_values(by = ['imdb_score'],ascending = False)
+IMDb_Top_250 = IMDb_Top_250.head(250)
+#IMDb_Top_250['imdb_score']
+#IDb_Top_250
+IMDb_Top_250['Rank'] = range(1,251)
+#IMDb_Top_250
+
+import matplotlib.pyplot as plt
+plt.hist(IMDb_Top_250['imdb_score'], bins = 5, range = (7.5,10), edgecolor = 'cyan')
+plt.show()
+
+Which actor is highest rated among the three actors according to the user reviews?
+
+Meryl_Streep = movies.loc[movies['actor_1_name'] == 'Meryl Streep']
+Meryl_Streep
+
+
+Leo_Caprio = movies.loc[movies['actor_1_name'] == 'Leonardo DiCaprio']
+Leo_Caprio
+
+Brad_Pitt = movies.loc[movies['actor_1_name'] == 'Brad Pitt']
+Brad_Pitt
+
+Combined = Meryl_Streep.append(Leo_Caprio).append(Brad_Pitt)
+Combined
+
+c =Combined.groupby(['actor_1_name'])
+c['num_critic_for_reviews'].mean()
+c['num_user_for_reviews'].mean()
+
+
+
+
