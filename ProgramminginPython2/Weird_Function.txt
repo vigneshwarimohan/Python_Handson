@@ -1,0 +1,60 @@
+Weird Function
+Description
+In data science, quite often you need to implement research papers and write code according to what's present in those papers. Research papers have a lot of maths involved and you need to implement the maths in code. In this exercise, you're required to implement some maths in code. The problem is as follows:
+
+For fixed integers a, b, c, define a weird function F(n) as follows: 
+F(n) = n - c for all n > b 
+F(n) = F(a + F(a + F(a + F(a + n)))) for all n ≤ b. 
+ 
+Also, define S(a, b, c) = ∑F(n) where n takes the values 0 till b [in other words, S(a, b, c) = F(0) + F(1) + F(2) + .... F(b-1) + F(b)].
+
+The input will be the value of a, b and c. The output should be S(a, b, c). You can define the functions in your own customized way with no restrictions on the number of parameters. For example, you can define the function S which can take additional parameters than a, b and c. Just make sure the code behaves as per the maths.
+ 
+For example, if a = 20, b = 100 and c = 15, then F(0) = 195 and F(2000) = 1985. 
+Therefore, S(20, 100, 15) = 14245
+
+
+Input:
+3 values separated by a comma
+a,b,c
+
+Output:
+S(a,b,c)
+
+
+Sample input:
+20, 100, 15
+
+Sample output:
+14245
+#Solution
+
+import ast,sys
+input_str = sys.stdin.read()
+#input_str = ast.literal_eval(input_str)
+#input_str = input()
+input_list = input_str.split(',')
+a = int(input_list[0])
+b = int(input_list[1])
+c = int(input_list[2])
+n=b
+result = 0
+def Weird_Func(n):
+    #print("n inside function",n)
+    if(n>b):
+        return(n-c)
+    else:
+        return(Weird_Func(a+Weird_Func(a+(Weird_Func(a+(Weird_Func(a+n)))))))
+        
+if(a <= 0)and(b <= 0) and (c <=0):
+    result = 0
+else:
+    while(n>=0):
+        #if(n==0):
+         #   result = 0
+          #  break
+        #else:
+        Final = Weird_Func(n)
+        result = Final+result
+        n = n-1
+print(result)

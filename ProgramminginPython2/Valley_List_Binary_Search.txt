@@ -1,0 +1,63 @@
+#a=[4,3,2,5,6,7,8,10,15]
+a=[13, 11, 8, 7, 6, 4, 3, 2, 1, 14, 15, 16, 17]
+key = int(input())
+valley_index = 8
+def binary_search(sorted_list,key):
+    left = 0 #Left Pointer
+    right = len(a)-1 #Right Pointer
+    middle = valley_index
+    while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+        print("left:",left)
+        print("right:",right)
+        print("middle:",middle)
+        if(a[middle] == key): #value of the middle point is equal to key then we found the match
+            return(middle)
+            break
+        elif(a[left]>=key>a[middle]):
+            print("hi")
+            right = middle-1
+            middle = (left+right)//2
+        else:
+            left = middle+1
+            #middle = (left+right)//2
+            while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+                    middle = (left+right)//2 #calculating the middle point
+                    if(a[middle] == key): #value of the middle point is equal to key then we found the match
+                        return(middle)
+                        break
+                    elif(key<a[middle]):         
+                        right = middle-1
+                    else:
+                        left = middle+1
+            return(-1)            
+            
+            
+    return(-1)
+            
+print(binary_search(a,key))
+
+
+
+
+
+
+a=[4,3,2,5,6,7,8,10,15]
+key = int(input())
+valley_index = 2
+def binary_search(sorted_list,key):
+    left = 0 #Left Pointer
+    right = len(a)-1 #Right Pointer
+    middle = valley_index
+    while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+        if(a[middle] == key): #value of the middle point is equal to key then we found the match
+            return(middle)
+            break
+        elif(key<=a[left]):
+            right = middle-1
+            middle = (left+right)//2
+        else:
+            left = middle+1
+            middle = (left+right)//2
+    return(-1)
+            
+print(binary_search(a,key))

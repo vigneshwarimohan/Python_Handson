@@ -1,0 +1,115 @@
+Search in Valley
+Description
+This is another searching problem. The list given will have a valley trend. The valley_list is created by the following steps. A sorted list is randomly divided in two parts, not necessarily equal. The left part is then reversed and put back in place.
+
+sorted_list: [1, 2, 3, 4, 6, 7, 8, 11, 13, 14, 15, 16, 17]
+
+valley_list will be obtained by dividing this list at 13 and reversing the left half making it [13, 11, 8, 7, 6, 4, 3, 2, 1, 14, 15, 16, 17]. Find the index of the given integer key in the given valley_list.
+
+Can you do better then Linear search? Hint: The correct answer does this search in O(log(n)) time where n is the size of the valley_list, just like rotated list question.
+
+----------------------------------------------------------------------
+Input:
+first-line will contain the valley_list and the second line will contain the element key whose index you have to find in the valley_list. No repetition of elements in the valley_list.
+
+Output:
+If key is present in the valley_list, print out its index.
+If key is not present in the valley_list print -1
+
+----------------------------------------------------------------------
+Sample input:
+[13, 11, 8, 7, 6, 4, 3, 2, 1, 14, 15, 16, 17]
+8
+
+Sample output:
+2
+----------------------------------------------------------------------
+Sample input:
+[13, 11, 8, 7, 6, 4, 3, 2, 1, 14, 15, 16, 17]
+32
+
+Sample output:
+-1
+
+#Solution
+
+import ast
+a = input()
+a = ast.literal_eval(a)
+key = int(input())
+#start writing your code here
+def valley_index(a):
+    l = 0
+    r = len(a)-1
+    mid1 = (l+r)//2
+    mid2 = mid1+1
+    if(a[mid1] > a[mid2]):
+        while(True):
+            #mid1 = mid2
+            #mid2 = mid1+1
+            #print("mid1:",mid1)
+            #print("mid2:",mid2)
+            if(a[mid1] > a[mid2]):
+                mid1 = mid2
+                mid2 = mid1+1
+            else:
+                valley_index = mid1
+                break
+    else:
+        while(True):
+            #mid1=mid1-1
+            #mid2=mid2-1
+            #print("m1:",mid1)
+            #print("m2:",mid2)
+            if (a[mid1] < a[mid2]):
+                mid1=mid1-1
+                mid2=mid2-1
+            else:
+                valley_index = mid2
+                break 
+    return(valley_index)
+
+def valley_search(sorted_list,key,valley_index):
+    left = 0 #Left Pointer
+    right = len(a)-1 #Right Pointer
+    middle = valley_index
+    while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+        #print("left:",left)
+        #print("right:",right)
+        #print("middle:",middle)
+        if(a[middle] == key): #value of the middle point is equal to key then we found the match
+            return(middle)
+            break
+        elif(a[left]>=key>a[middle]):
+            #print("hi")
+            right = middle-1
+            while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+                    middle = (left+right)//2 #calculating the middle point
+                    if(a[middle] == key): #value of the middle point is equal to key then we found the match
+                        return(middle)
+                        break
+                    elif(key>a[middle]):         
+                        right = middle-1
+                    else:
+                        left = middle+1
+        else:
+            left = middle+1
+            #middle = (left+right)//2
+            while (left<=right): #iterates till left pointer is less than right pointer(i.e) key element is found
+                    middle = (left+right)//2 #calculating the middle point
+                    if(a[middle] == key): #value of the middle point is equal to key then we found the match
+                        return(middle)
+                        break
+                    elif(key<a[middle]):         
+                        right = middle-1
+                    else:
+                        left = middle+1
+            return(-1)            
+            
+            
+    return(-1)
+
+
+v = valley_index(a)
+#print("valley_index",v)            
+print(valley_search(a,key,v))
